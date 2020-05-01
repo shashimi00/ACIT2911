@@ -1,0 +1,29 @@
+<app-nav></app-nav>
+
+<div class="container">
+  <!-- <div class="row">
+    <div class="col">
+      <app-shopping-cart></app-shopping-cart>
+    </div>
+  </div> -->
+  <!-- <button class="btn btn-primary btn-lg btn-block" (click)="firstComponentFunction()"><a routerLink="/cart" routerLinkActive="active">Checkout</a>
+  </button> -->
+  <a routerLink="/shoppingCart" routerLinkActive="active"></a>
+  <a routerLink="/cart" routerLinkActive="active"></a>
+  <a routerLink="/payment" routerLinkActive="active"></a>
+  <router-outlet></router-outlet>
+  
+  <!-- <div class="row">
+    <div class="col">
+      <app-payment></app-payment>
+    </div>
+  </div> -->
+    <!-- <a routerLink="/payment" routerLinkActive="active"><button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button></a> -->
+
+  
+  <div class="row">
+    <div class="col">
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>
