@@ -11,6 +11,17 @@ export class ProductService {
   _productsArray: Array<any>;
   _http:HttpClient;
   _errorMessage:String = "";
+  _id: Number; 
+  _productName:String;
+  _editableProductName:String="";
+  _editablePrice: String="";
+  _editId:Number = null;
+  _editableDescription:String="";
+  _singleProductNumber : number = null;
+  _singleProductName: string = "";
+  _singleProductPrice : string = "";
+  _singleProductDescription: string = "";
+
 
   // products: Product[] = [
   //   new Product(1, 'Product 1', 'This is the product 1 description. ', 100),
