@@ -1,4 +1,58 @@
+<<<<<<< Updated upstream
 <app-nav></app-nav>
+=======
+<!-- <app-nav></app-nav> -->
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="shoppingCart"><app-header></app-header></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="shoppingCart">Shop</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href='cart'>Cart</a>  
+        </li>
+        <!-- 'else' must be in separate section with curly brackets to work. -->
+        <li class="nav-item">
+        <a class="nav-link" href='payment'>Checkout</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="message == 'Not logged in.'" class="nav-link" href="register">Sign up</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="message == 'Not logged in.'" class="nav-link" href="login">Log in</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="message == 'The user has been logged in.'" class="nav-link" href="logout" (click)="logout()">Logout ({{username}})</a>
+      </li>
+      
+        
+          
+           
+
+
+      </ul>
+    </div>
+  </nav>
+<!-- it works -->
+
+
+<br><br>
+  <!-- <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-dark" href="#">Features</a>
+    <a class="p-2 text-dark" href="#">Enterprise</a>
+    <a class="p-2 text-dark" href="#">Support</a>
+    <a class="p-2 text-dark" href="#">Pricing</a>
+  </nav> -->
+  
+
+  <!-- <span *ngIf="message == 'The user has been logged in.'"> | <a routerLink="/logout" routerLinkActive="active" (click)="logout()">Logout ({{username}})</a> </span> -->
+>>>>>>> Stashed changes
 
 <div class="container">
   <!-- <div class="row">
