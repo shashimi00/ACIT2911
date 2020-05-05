@@ -11,5 +11,5 @@ var ProductSchema = mongoose.Schema({
 { collection : 'products' },
 );
 
-var Product    = mongoose.model('Product', ProductSchema);
+var Product    = mongoose.model('Product', ProductSchema, this.collection="products");
 module.exports = Product;

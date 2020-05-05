@@ -1,10 +1,12 @@
 var HomeController = require('./Controllers/HomeController');
 var ProductController = require('./Controllers/ProductController');
+
 var OrderController = require('./Controllers/OrderController');
 var UserController   = require('./Controllers/UserController');
 
 const authMiddleware = require('./authHelper')
 const cors           = require('cors');
+
 
 // Routes
 module.exports = function(app){  
@@ -23,6 +25,7 @@ module.exports = function(app){
     app.get('/Product/Index', cors(), ProductController.Index);
     app.post('/Product/CreateProduct', cors(), ProductController.CreateProduct);
     app.delete('/Product/Delete', cors(), ProductController.Delete);
+
     app.get('/Order/Index', cors(), OrderController.Order);
     app.post('/Order/Submit', cors(), OrderController.SubmitOrder);
 
@@ -48,5 +51,7 @@ module.exports = function(app){
     app.post('/User/PostAreaJwt', cors(),
         authMiddleware.requireJWT, UserController.PostAreaJwt)
 
+    app.get('/Product/Edit', ProductController.Edit);
+    app.put('/Product/Update', cors(), ProductController.Update);
 };
 

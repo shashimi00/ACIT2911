@@ -3,11 +3,17 @@
 <b>Product Detail</b>
 
 <form action="/Product/Update" method="POST">
-<b>ID: </b> <%= product._id %> <br/>
-<b>Product Name:</b> 
-<input type='hidden' name="_id" value= <%= product._id %> /> <br/>
-<input type='text'  name="productName" 
-       value="<%= product.productName ? product.productName : '' %>"  /><br/>
-<input type="submit" value="Submit">
+    <b>ID: </b> <%= product._id %> <br/>
+    <b>Product Name:</b>
+    <input type='hidden' name="_id" value= <%= product._id %> /> <br/>
+    <input type='text'  name="productName"
+           value="<%= product.productName ? product.productName : '' %>"  /><br/>
+    <b>Product Price:</b>
+    <input type='text'  name="price"
+           value="<%= product.price ? product.price : '' %>"  /><br/>
+    <b>Product Description:</b>
+    <input type='text'  name="description"
+           value="<%= product.description ? product.description : '' %>"  /><br/>
+    <input type="submit" value="Submit">
 </form>
 <%= errorMessage %>
