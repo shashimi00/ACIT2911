@@ -35,11 +35,11 @@ describe("Products API Tests", () => {
                     // // Extract 'products' from API response
                     let products = res.body.products;
                     // // Ensure value is correct
-                    products[0]["productName"].should.equal("Cobb Salad");
-                    products[1]["productName"].should.equal("Thai Noodles");
-                    products[2]["productName"].should.equal("Fruit Flan");
-                    products[3]["productName"].should.equal("Orange Juice");
-
+                    products[0]["productName"].should.equal("Striped Tie");
+                    products[1]["productName"].should.equal("Leather shoes");
+                    products[2]["productName"].should.equal("Dress shirt");
+                    products[3]["productName"].should.equal("Dress pants");
+                    products[4]["productName"].should.equal("Bowtie");
                     done();
                 });
         });
@@ -51,11 +51,11 @@ describe("Products API Tests", () => {
                     // // Extract 'products' from API response
                     let products = res.body.products;
                     // // Ensure value is correct
-                    products[0]["price"].should.equal(11.99);
-                    products[1]["price"].should.equal(12.99);
-                    products[2]["price"].should.equal(8.99);
-                    products[3]["price"].should.equal(2.99);
-
+                    products[0]["price"].should.equal(65.99);
+                    products[1]["price"].should.equal(120.99);
+                    products[2]["price"].should.equal(140.99);
+                    products[3]["price"].should.equal(175.99);
+                    products[4]["price"].should.equal(42.99);
                     done();
                 });
         })
