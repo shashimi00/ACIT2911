@@ -50,8 +50,5 @@ module.exports = function(app){
 // Receives posted data from authenticated users.
     app.post('/User/PostAreaJwt', cors(),
         authMiddleware.requireJWT, UserController.PostAreaJwt)
-
-    app.get('/Product/Edit', ProductController.Edit);
-    app.put('/Product/Update', cors(), ProductController.Update);
 };
 
