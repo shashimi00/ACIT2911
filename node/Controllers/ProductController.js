@@ -63,43 +63,6 @@ exports.CreateProduct = async function(request, response) {
     }
 };
 
-// Displays 'edit' form and is accessed with get request.
-exports.Edit = async function(request, response) {
-    let productID  = request.query._id;
-    console.log(productID);
-    let productObj = await _productRepo.getProduct(productID);
-    response.json( {product:productObj, errorMessage:""});
-};
-
-// Receives posted data that is used to update the item.
-exports.Update = async function(request, response) {
-    let productID = request.body._id;
-    console.log("The posted product id is: " + productID);
-
-    // Parcel up data in a 'Product' object.
-    let tempProductObj  = new Product( {
-        _id: productID,
-        productName:    request.body.productName,
-        price: request.body.price,
-        description: request.body.description
-    });
-
-    // Call update() function in repository with the object.
-    let responseObject = await _productRepo.update(tempProductObj);
-
-    // Update was successful. Show detail page with updated object.
-    if(responseObject.errorMessage == "") {
-        response.json({ product:responseObject.obj,
-            errorMessage:"" });
-    }
-
-    // Update not successful. Show edit form again.
-    else {
-        response.json( {
-            product:      responseObject.obj,
-            errorMessage: responseObject.errorMessage });
-    }
-};
 // This function receives an id when it is posted. 
 // It then performs the delete and shows the product listing after.
 // A nicer (future) version could take you to a page to confirm the deletion first.
