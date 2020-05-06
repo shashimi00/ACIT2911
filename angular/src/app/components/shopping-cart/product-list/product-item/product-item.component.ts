@@ -20,5 +20,4 @@ export class ProductItemComponent implements OnInit {
     this.msg.sendMsg(this.productItem)
   }
 
-  
 }

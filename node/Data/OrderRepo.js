@@ -6,7 +6,7 @@ class OrderRepo{
     }
 
     async allOrders() {
-        let orders = await Order.find().exec()
+        let orders = await Order.find().exec();
         return orders
     }
     

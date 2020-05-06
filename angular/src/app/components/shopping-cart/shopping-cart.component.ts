@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CartComponent} from './cart/cart.component';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { EventEmitterService } from 'src/app/services/event-emitter.service'; 
 
 @Component({
   selector: 'app-shopping-cart',
@@ -9,13 +7,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent implements OnInit {
-  _http:HttpClient;
 
-  constructor(private http: HttpClient) {
-    this._http = http;
-   }
+  constructor(private eventEmitterService: EventEmitterService) { }
 
   ngOnInit() {
   }
 
+  
 }

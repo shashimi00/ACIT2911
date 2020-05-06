@@ -5,8 +5,6 @@ import { CartComponent}          from './components/shopping-cart/cart/cart.comp
 import { ShoppingCartComponent}  from './components/shopping-cart/shopping-cart.component'
 import { EventEmitterService}    from './services/event-emitter.service'
 import { PaymentComponent}       from './components/payment/payment.component'
-import { RegisterComponent }         from './components/register/register.component';
-import { LoginComponent }            from './components/login/login.component';
 
 
 
@@ -14,11 +12,8 @@ const appRoutes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'shoppingCart', component: ShoppingCartComponent },
   { path: 'payment', component: PaymentComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'logout', component: ShoppingCartComponent},
   // { path: 'orderSummary', component: OrderSummaryComponent },
-  { path: '', component: LoginComponent  },
+  { path: '', component: ShoppingCartComponent  },
   // { path: '**', component: AppComponent }
 ];
 

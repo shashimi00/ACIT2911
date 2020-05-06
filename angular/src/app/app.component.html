@@ -1,30 +1,6 @@
-<!-- <app-nav></app-nav> -->
-<!-- it works -->
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-  <h5 class="my-0 mr-md-auto font-weight-normal">
-    <app-header></app-header>
-  </h5>
-  <!-- <nav class="my-2 my-md-0 mr-md-3">
-    <a class="p-2 text-dark" href="#">Features</a>
-    <a class="p-2 text-dark" href="#">Enterprise</a>
-    <a class="p-2 text-dark" href="#">Support</a>
-    <a class="p-2 text-dark" href="#">Pricing</a>
-  </nav> -->
-  <a *ngIf="message == 'Not logged in.'" class="btn btn-outline-primary" href="register">Sign up</a>
-  <a *ngIf="message == 'Not logged in.'" class="btn btn-outline-primary" href="login">Log in</a>
-  <a *ngIf="message == 'The user has been logged in.'" class="btn btn-outline-primary" href="" (click)="logout()">Logout ({{username}})</a>
-
-  <!-- <span *ngIf="message == 'The user has been logged in.'"> | <a routerLink="/logout" routerLinkActive="active" (click)="logout()">Logout ({{username}})</a> </span> -->
-
-</div>
+<app-nav></app-nav>
 
 <div class="container">
-  <div class= col-md-4>
-  <div *ngIf="message == 'Not logged in.'" class="alert alert-warning" >
-    <strong>Sign Up</strong> for a better experience!!!
-  </div>
-</div>
-  
   <!-- <div class="row">
     <div class="col">
       <app-shopping-cart></app-shopping-cart>
@@ -34,12 +10,6 @@
   </button> -->
   <a routerLink="/shoppingCart" routerLinkActive="active"></a>
   <a routerLink="/cart" routerLinkActive="active"></a>
-  <!-- <span *ngIf="message == 'Not logged in.'">  <a routerLink="/login" routerLinkActive="active">Login</a> </span> -->
-
-  <!-- <span *ngIf="message == 'Not logged in.'"> -->
-     <!-- | <a routerLink="/register" routerLinkActive="active">Register</a>  -->
-    <!-- </span><br> -->
-
   <a routerLink="/payment" routerLinkActive="active"></a>
   <router-outlet></router-outlet>
   
@@ -51,9 +21,9 @@
     <!-- <a routerLink="/payment" routerLinkActive="active"><button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button></a> -->
 
   
-  <!-- <div class="row">
+  <div class="row">
     <div class="col">
       <app-footer></app-footer>
     </div>
-  </div> -->
+  </div>
 </div>

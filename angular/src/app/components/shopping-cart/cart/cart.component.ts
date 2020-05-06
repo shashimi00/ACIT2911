@@ -59,10 +59,9 @@ export class CartComponent implements OnInit {
 
     this.cartTotal = 0
     this.cartItems.forEach(item => {
-    this.cartTotal += (item.qty * item.price)
+      this.cartTotal += (item.qty * item.price)
     })
   }
-
 
   submitOrder() {
     // This free online service receives post submissions.
@@ -83,4 +82,5 @@ export class CartComponent implements OnInit {
     });
     // this.clearOrder()
 }
+
 }
