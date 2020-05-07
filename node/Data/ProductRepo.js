@@ -86,7 +86,7 @@ class ProductRepo {
                 }
                 // Errors occurred during the update.
                 else {
-                    respons.errorMessage = 
+                    response.errorMessage =
                         "An error occurred during the update. The item did not save." 
                 };
                 return response; 

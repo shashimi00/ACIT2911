@@ -15,6 +15,9 @@ import { ProductItemComponent } from './components/shopping-cart/product-list/pr
 import { routing }        from './app.routing';
 import { EventEmitterService } from './services/event-emitter.service';
 import { PaymentComponent } from './components/payment/payment.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import { PaymentComponent } from './components/payment/payment.component';
     CartComponent,
     CartItemComponent,
     ProductItemComponent,
-    PaymentComponent
+    PaymentComponent,
+    RegisterComponent,
+    LoginComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule, FormsModule, HttpClientModule, routing
