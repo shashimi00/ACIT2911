@@ -1,12 +1,53 @@
 // imports dependencies for testing
+import request from "superagent";
+
 var chai = require('chai');
 var mongoose = require('mongoose');
 var chaiHttp = require('chai-http');
 var app = require('../app.js');
+var request = require('supertest');
 
 // Configures chai
 chai.use(chaiHttp);
 chai.should();
+
+describe("User API Tests", () => {
+    // pass to the login method
+    const userInfo = {
+        username: 'jamesfranco',
+        password: 'x'
+    };
+
+    // login user before running tests
+    var authenticatedUser = request.agent(app);
+
+    before(function(done){
+        authenticatedUser
+            .post('/User/Login')
+            .send(userInfo)
+            .end(function(err, response){
+                expect(response.statusCode).to.equal(200);
+                expect('Location', '/User/SecureArea');
+                done();
+            })
+    });
+
+    describe('GET /User/SecureArea', () => {
+        // if user is logged in, status code = 200
+        it('should return 200 if user is logged in', (done) => {
+            authenticatedUser.get('/User/SecureArea')
+                .expect(200, done);
+        });
+
+        // if user fails to login, redirect to /User/Login?errorMessage=Invalid login.
+        it('should redirect to error page', (done) => {
+            request(app).get('/User/SecureArea')
+                .expect('Location', '/User/Login?errorMessage=Invalid login.')
+        });
+    })
+});
+
+
 
 describe("Products API Tests", () => {
     before(function(){
