@@ -14,9 +14,11 @@ export class ProductService {
   _productName:String;
   _editableProductName:String="";
   _errorMessage:String = "";
+
   _editId:Number = null;
   _singleProductNumber : number = null;
   _singleProductName: string = "";
+
 
 
   // products: Product[] = [
