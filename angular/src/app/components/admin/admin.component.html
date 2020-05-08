@@ -1,1 +1,36 @@
-<p>admin works!</p>
+
+  <main role="main">
+    
+  
+    <div class="album py-5 bg-light">
+      <div class="container">
+  
+        <div class="row">
+          <div class="col-md-4" *ngFor="let product of _productsArray" >
+            <div class="card mb-4 shadow-sm"  style="background-color: black;">
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+              <div class="card-body">
+                <p class="card-text" style="color: white;"><strong>{{product.productName}}</strong></p>
+                <!-- <p class="card-text text-muted">{{product.description}}</p> -->
+                <!-- <p class="card-text">{{product.price}}</p> -->
+                <div class="buy d-flex justify-content-between align-items-center">
+                    <div class="price text-danger"><h5 class="mt-4">{{ product.price | currency:'USD' }}</h5></div>
+                     <!-- <button class="btn btn-danger mt-3" (click)="handleAddToCart()"><i class="fas fa-shopping-cart"></i> Add to Cart</button> -->
+                     <button type="button" class="btn btn-danger mt-6" (click)="deleteProduct(product._id)">Delete</button>
+
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container text-right">
+            <a type="button" class="btn btn-danger d-inline" href="/create">Create New Product</a>
+        </div>
+      </div>
+    </div>
+    
+  </main>
+  
+  <app-footer></app-footer>
+  <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script> -->

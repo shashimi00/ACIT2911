@@ -18,6 +18,8 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { CreateComponent } from './components/admin/create/create.component';
+import { ListComponent } from './components/admin/list/list.component';
 
 
 @NgModule({
@@ -35,8 +37,26 @@ import { AdminComponent } from './components/admin/admin.component';
     PaymentComponent,
     RegisterComponent,
     LoginComponent,
-    AdminComponent
+    AdminComponent,
+    CreateComponent,
+    ListComponent
   ],
+  exports:[AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    NavComponent,
+    ShoppingCartComponent,
+    FiltersComponent,
+    ProductListComponent,
+    CartComponent,
+    CartItemComponent,
+    ProductItemComponent,
+    PaymentComponent,
+    RegisterComponent,
+    LoginComponent,
+    AdminComponent,
+    CreateComponent,
+    ListComponent],
   imports: [
     BrowserModule, FormsModule, HttpClientModule, routing
   ],

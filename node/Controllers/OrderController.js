@@ -21,8 +21,8 @@ exports.Create = async function(request, response) {
 
 exports.SubmitOrder = async function(request, response){
     let tempOrderObj = new Order({
-        "dateTime":request.body.dateTime,
-        "serverName":request.body.serverName,
+        "userName":request.body.userName,
+        // "cartItems":request.body.cartItems,
         "total":request.body.total
     })
     

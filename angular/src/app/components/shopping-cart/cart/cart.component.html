@@ -1,4 +1,4 @@
-<div *ngIf="cartItems.length === 0" class="alert alert-info">Your Cart is Empty.</div>
+<div *ngIf="cartItems.length === 0" class="alert alert-danger">Your Cart is Empty.</div>
 
 <!-- <div *ngIf="cartItems.length > 0" class="alert alert-info">
   <div class="alert-info active">
@@ -13,14 +13,27 @@
   </div>
 </div> -->
 <div *ngIf="cartItems.length > 0" class="card mb-4 shadow-sm">
-  <div class="card-header">
-    <h4 class="card-title pricing-card-title">Your Cart</h4>
+  <div class="card-header"  style="background-color: black; color: white;" >
+    <h4 class="card-title pricing-card-title text-danger">Your Cart</h4>
   </div>
+
+
+  
   <div class="card-body">
     <div class="list-unstyled mt-3 mb-4" *ngFor="let item of cartItems">
       <app-cart-item [cartItem]="item"></app-cart-item>
+      <button type="button" class="btn btn-danger float-right" (click)="removeItem()">Remove</button>
     </div>
-    <button type="button" class="btn btn-lg btn-block btn-primary"><strong>Total</strong> {{ cartTotal | currency:'USD' }}</button>
+    <div>
+        <input  type="text" #box class="form-control" name="box" placeholder="Promo code" (keyup.enter)="onEnter(box.value)">
+      </div><br>
+      <div *ngIf="success" class="alert alert-success">
+        Promo code approved. You got a discount of 20%
+      </div>
+      <div *ngIf="failure" class="alert alert-danger">
+        Please enter a valid promo code to get a discount
+      </div>
+    <button type="button" class="btn btn-lg btn-block btn-danger"><strong>Total</strong> {{ cartTotal | currency:'USD' }}</button>
   </div>
 </div>
 
