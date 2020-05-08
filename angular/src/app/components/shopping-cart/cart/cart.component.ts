@@ -13,10 +13,12 @@ export class CartComponent implements OnInit {
   _http:HttpClient;
   _errorMessage:String = "";
 
-  cartItems = [
-  ];
-
+  cartItems = [];
+  codes = ["Maxwell", "Harsimran", "Shabnam", "Aleaf", "SJPark","Angela","Taz" ]
   cartTotal = 0
+  success = false;
+  failure = false
+
 
   constructor(private msg: MessengerService, private http: HttpClient, private eventEmitterService: EventEmitterService    
     ) {
@@ -34,6 +36,11 @@ export class CartComponent implements OnInit {
         this.submitOrder();    
       });    
     } 
+  }
+
+  clearPromo() {
+    this.success = false
+    this.failure = false
   }
 
   addProductToCart(product) {
@@ -56,17 +63,68 @@ export class CartComponent implements OnInit {
         price: product.price
       })
     }
+     if (product.qty == 0){
+       this.cartItems.slice()
+       const index = this.cartItems.indexOf(product)
+    // if (index> -1){
+        this.cartItems.splice(index, 1)
+    // }
+    // this._quantity=0
+     }
 
+    // this.cartTotal = 0
+    // this.cartItems.forEach(item => {
+    // this.cartTotal += (item.qty * item.price)
+    // }
+    // )
+    this.total()
+  }
+
+  total() {
     this.cartTotal = 0
     this.cartItems.forEach(item => {
-      this.cartTotal += (item.qty * item.price)
+    this.cartTotal += (item.qty * item.price)
     })
   }
+
+  removeItem(item) {
+
+    const index = this.cartItems.indexOf(item)
+    // if (index> -1){
+        this.cartItems.splice(index, 1)
+    // }
+    // this._quantity=0
+
+    // for (var i=0;i<this.items.length;i++){
+    //     if (item._id == this.items[i]._id){
+    //         this._quantity++
+    //     }
+    // }
+    // item["num"] = this._quantity
+    this.total()
+}
+
+onEnter(value){
+  this.total()
+    this.clearPromo()
+  for (var i=0;i<this.codes.length;i++){
+        if (this.codes[i] == value){
+          const index = this.codes.indexOf(value)
+          // if (index> -1){
+              this.codes.splice(index, 1) 
+    this.cartTotal -= 0.02*this.cartTotal
+    this.success=true
+    }
+  }
+  if (this.success == false) {
+    this.failure = true
+  }
+}
 
   submitOrder() {
     // This free online service receives post submissions.
     this.http.post("http://localhost:1337/Order/Submit",
-    this.cartItems)
+    {userName:"sadas", total: this.cartTotal})
 .subscribe(
     // Data is received from the post request.
     (data) => {
@@ -83,4 +141,5 @@ export class CartComponent implements OnInit {
     // this.clearOrder()
 }
 
+  
 }
