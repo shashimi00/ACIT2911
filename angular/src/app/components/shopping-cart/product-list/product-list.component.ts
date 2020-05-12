@@ -23,6 +23,9 @@ import { Product } from 'src/app/models/product';
 // }
 
 export class ProductListComponent{
+
+  model:any;
+  
   _productsArray: Array<any>;
   _http:HttpClient;
   _errorMessage:String = "";
@@ -31,6 +34,28 @@ export class ProductListComponent{
     this._http = http;
     this.getProducts();
     // this.items = [];  
+}
+
+ngOnInit() {
+
+  this.model =
+  [
+    {
+      image: "../assets/images/1.JPG",
+    },
+    {
+      image: "../assets/images/2.JPG",
+    },
+    {
+      image: "../assets/images/3.JPG",
+    },
+    {
+      image: "../assets/images/4.JPG",
+    },
+    {
+      image: "../assets/images/5.JPG",
+    }
+  ]
 }
 
   getProducts() {

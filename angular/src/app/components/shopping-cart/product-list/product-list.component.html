@@ -1,5 +1,17 @@
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-4" *ngFor="let product of _productsArray">
     <app-product-item [productItem]="product"></app-product-item>
   </div>
-</div>
+</div> -->
+
+<table align="left">
+  <td *ngFor="let product of _productsArray">
+    <tr><app-product-item [productItem]="product"></app-product-item></tr>
+  </td>
+</table>
+
+<table align="left">
+  <td *ngFor="let obj of model">
+    <img src='{{obj.image}}'/>
+  </td>
+</table>
