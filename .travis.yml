@@ -12,6 +12,7 @@ before_install:
 - cd node
 
 before_script:
+- sleep 15
 - cd tests
 - npm install mocha
 - npm install chai
