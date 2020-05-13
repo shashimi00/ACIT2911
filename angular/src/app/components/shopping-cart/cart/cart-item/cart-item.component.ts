@@ -14,4 +14,10 @@ export class CartItemComponent implements OnInit {
   ngOnInit() {
   }
 
+  remove() {
+    if (this.cartItem.qty > 0){
+      this.cartItem.qty--
+    }
+  }
+
 }

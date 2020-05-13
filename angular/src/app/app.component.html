@@ -1,29 +1,42 @@
-<app-nav></app-nav>
+<nav class="colour navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="shoppingCart">
+    <app-header></app-header>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="shoppingCart">Shop</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href='payment'>Checkout</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="message == 'Not logged in.'" class="nav-link" href="register">Sign up</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="message == 'Not logged in.'" class="nav-link" href="login">Log in</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="admin" class="nav-link" href="admin">Edit Products</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="message == 'The user has been logged in.'" class="nav-link" href="logout" (click)="logout()">Logout
+          ({{username}})</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br>
+
 
 <div class="container">
-  <!-- <div class="row">
-    <div class="col">
-      <app-shopping-cart></app-shopping-cart>
-    </div>
-  </div> -->
-  <!-- <button class="btn btn-primary btn-lg btn-block" (click)="firstComponentFunction()"><a routerLink="/cart" routerLinkActive="active">Checkout</a>
-  </button> -->
-  <a routerLink="/shoppingCart" routerLinkActive="active"></a>
-  <a routerLink="/cart" routerLinkActive="active"></a>
-  <a routerLink="/payment" routerLinkActive="active"></a>
   <router-outlet></router-outlet>
-  
-  <!-- <div class="row">
-    <div class="col">
-      <app-payment></app-payment>
-    </div>
-  </div> -->
-    <!-- <a routerLink="/payment" routerLinkActive="active"><button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button></a> -->
-
-  
-  <div class="row">
-    <div class="col">
-      <app-footer></app-footer>
-    </div>
-  </div>
 </div>
+<br>
+

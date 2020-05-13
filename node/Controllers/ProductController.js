@@ -21,7 +21,7 @@ exports.Detail = async function(request, response) {
     
     let productObj = await _productRepo.getProduct(productID);
     response.json( { product:productObj });
-};
+}
 
 // GET request calls here to display 'Product' create form.
 exports.Create = async function(request, response) {
@@ -30,32 +30,18 @@ exports.Create = async function(request, response) {
 
 // Receives POST data and tries to save it.
 exports.CreateProduct = async function(request, response) {
-
-    // Package object up nicely using content from 'body'
-    // of the POST request.
-    imgPath = request.body.path;
     let tempProductObj  = new Product( {
-        "_id":request.body._id,
-        "productName":    request.body.productName,
-        "price":request.body.price,
-        "description": request.body.description
+        "_id":request.body._id, "productName":    request.body.productName,
+        "price":request.body.price,"description": request.body.description
     });
-
-    // tempProductObj.image.data = fs.readFileSync(imgPath)
-    // tempProductObj.image.contentType = 'png'
-
     // Call Repo to save 'Product' object.
     let responseObject = await _productRepo.create(tempProductObj);
 
-    // No errors so save is successful.
     if(responseObject.errorMessage == "") {
         console.log('Saved without errors.');
-        console.log(JSON.stringify(responseObject.obj));
         response.json({ product:responseObject.obj,
                                             errorMessage:""});
-    }
-    // There are errors. Show form the again with an error message.
-    else {
+    }else {
         console.log("An error occured. Item not created.");
         response.json( {
                         product:responseObject.obj,
@@ -74,5 +60,5 @@ exports.Delete = async function(request, response) {
     console.log(JSON.stringify(deletedItem));
     let products     = await _productRepo.allProducts();
     response.json( {products:products});
-};
+}
 

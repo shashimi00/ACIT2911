@@ -5,15 +5,22 @@ import { CartComponent}          from './components/shopping-cart/cart/cart.comp
 import { ShoppingCartComponent}  from './components/shopping-cart/shopping-cart.component'
 import { EventEmitterService}    from './services/event-emitter.service'
 import { PaymentComponent}       from './components/payment/payment.component'
-
-
+import { RegisterComponent }     from './components/register/register.component';
+import { LoginComponent }        from './components/login/login.component';
+import { AdminComponent }        from './components/admin/admin.component'   
+import { CreateComponent }       from './components/admin/create/create.component'
 
 const appRoutes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'shoppingCart', component: ShoppingCartComponent },
   { path: 'payment', component: PaymentComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'logout', component: ShoppingCartComponent},
+  { path: 'admin', component: AdminComponent},
+  { path: 'create', component: CreateComponent},
   // { path: 'orderSummary', component: OrderSummaryComponent },
-  { path: '', component: ShoppingCartComponent  },
+  { path: '', component: LoginComponent  },
   // { path: '**', component: AppComponent }
 ];
 
