@@ -1,5 +1,6 @@
 // imports dependencies for testing
 var chai = require('chai');
+var superagent = require('superagent');
 var mongoose = require('mongoose');
 var chaiHttp = require('chai-http');
 var app = require('../app.js');
@@ -7,6 +8,16 @@ var app = require('../app.js');
 // Configures chai
 chai.use(chaiHttp);
 chai.should();
+
+// travis ci stuff
+var url = "mongodb://localhost:27017/madmenDB";
+
+mongoose.createConnection(url, function(err, db) {
+    if (err) throw err;
+    console.log("Database created!");
+    db.close();
+});
+
 
 describe("Products API Tests", () => {
     before(function(){
