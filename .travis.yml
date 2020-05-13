@@ -12,10 +12,7 @@ cache:
     - "node_modules"
 
 before_install:
-- cd node
-
-before_script:
-- cd tests
+- cd node/tests
 
 services:
 - mongodb
