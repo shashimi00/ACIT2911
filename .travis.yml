@@ -17,6 +17,7 @@ before_script:
 - npm install mocha
 - npm install chai
 - npm install chai-http
+- npm install superagent
 
 services:
 - mongodb
