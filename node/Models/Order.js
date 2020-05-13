@@ -1,8 +1,8 @@
 var mongoose         = require('mongoose');
 
 var orderSchema = mongoose.Schema({
-    dateTime:    {"type" : "String"},
-    serverName:  {"type": "String"},
+    userName:    {"type" : "String"},
+    // cartItems:  {"type": "String"},
     total:       {"type": Number}
 },
 { collection : 'orders' },

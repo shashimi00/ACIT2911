@@ -55,19 +55,20 @@ describe("Products API Tests", () => {
     });
     describe("GET /Product/Index", () => {
         // tests
+
         it("OK, products are retrieved.", (done) => {
             chai.request(app)
                 .get(`/Product/Index`)
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('object');
-                    // show entire contents of response
-                    console.log(JSON.stringify(res.body));
+                    res.should.be.json;
 
+                    // show entire contents of response
+                    // console.log(JSON.stringify(res.body))
                     done();
                 });
         });
-    
 
         it("Testing product Names", (done) => {
             chai.request(app)
@@ -93,12 +94,27 @@ describe("Products API Tests", () => {
                     let products = res.body.products;
                     // // Ensure value is correct
                     products[0]["price"].should.equal(65.99);
-                    products[1]["price"].should.equal(120.99);
+                    products[1]["price"].should.equal(99.99);
                     products[2]["price"].should.equal(140.99);
                     products[3]["price"].should.equal(175.99);
                     products[4]["price"].should.equal(42.99);
                     done();
                 });
         })
+
+        // // Perform a POST test.
+        it("Tests POST request from API.", 
+             (done) => {
+             const id = 5;
+             chai.request(app)
+                 .post(`/Product/CreateProduct`)
+                 .send({_id:82,productName:"justTest",price:67.99,description:"Don't worry, just testing"})
+                 .end((err, res) => {
+                    res.should.have.status(200);
+                    res.should.be.json;
+                    res.body.should.be.a('object');
+                     done();
+                  });
+         });
     });
 });

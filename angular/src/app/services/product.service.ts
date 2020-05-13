@@ -20,6 +20,7 @@ export class ProductService {
   _singleProductName: string = "";
 
 
+<<<<<<< HEAD
 
   // products: Product[] = [
   //   new Product(1, 'Product 1', 'This is the product 1 description. ', 100),
@@ -38,6 +39,8 @@ export class ProductService {
   //   //TODO: Populate products from an API and return an Observable
   //   return this.products
   // }
+=======
+>>>>>>> 3a0e930ed971a152a46c082610a35d6767d37af9
   constructor(private http: HttpClient) {
     this._http = http;
     this.getProducts();

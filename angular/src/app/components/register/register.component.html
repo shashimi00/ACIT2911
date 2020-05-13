@@ -1,7 +1,8 @@
-<div class="col-md-4">
+<div class="col-md-4"   style="background-color: black;">
   <!-- <div class="row"> -->
+    <br>
     <div class="mb-3">
-      <label for="firstName"><b>First name</b></label>
+      <label for="firstName" style="color: white"><b>First name</b></label>
       <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="firstName"
         placeholder="First Name" value="" required>
       <div class="invalid-feedback">
@@ -11,7 +12,7 @@
 
 
     <div class="mb-3">
-      <label for="lastName"><b>Last name</b></label>
+      <label for="lastName" style="color: white"><b>Last name</b></label>
       <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="lastName"
         placeholder="Last Name" value="" required>
       <div class="invalid-feedback">
@@ -22,7 +23,7 @@
 
 
   <div class="mb-3">
-    <label for="username"><b>Username</b></label>
+    <label for="username" style="color: white"><b>Username</b></label>
     <div class="input-group">
       
       <input type="text" class="form-control" id="username" name="username" [(ngModel)]="username"
@@ -35,7 +36,7 @@
 
 
   <div class="mb-3">
-    <label for="email"><b>Email</b></label>
+    <label for="email" style="color: white"><b>Email</b></label>
     <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" placeholder="you@example.com">
     <div class="invalid-feedback">
       Please enter a valid email address for shipping updates.
@@ -43,22 +44,22 @@
   </div>
 
   <div class="mb-3">
-    <label for="password"><b>Password </b> </label>
+    <label for="password" style="color: white"><b>Password </b> </label>
     <input type="text" class="form-control" name="password" [(ngModel)]="password" placeholder="Password">
   </div>
 
   <div class="mb-3">
-    <label for="password"><b>Confirm Password </b> </label>
+    <label for="password" style="color: white"><b>Confirm Password </b> </label>
     <input type="text" class="form-control" name="passConf" [(ngModel)]="passConf" placeholder="Confirm Password">
   </div>
   {{errorMessage}}
   <br>
-  <b>Is this an Admin User?</b>
+  <b  style="color: white">Is this an Admin User?</b>
   <input mbdInput type="checkbox" name="admin" [(ngModel)]="admin">
   <br>
 
   <br>
 </div>
-<button class="col-md-4 btn btn-sm btn-primary product-btn" type="submit" (click)="addUser()">Sign Up</button>
+<button class="col-md-4 btn btn-sm btn-danger product-btn" type="submit" (click)="addUser()">Sign Up</button>
 <br>
 <br>
