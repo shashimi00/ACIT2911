@@ -20,6 +20,3 @@ before_script:
 
 services:
 - mongodb
-
-script: 
-- "./node_modules/mocha/bin/mocha *test.js"
