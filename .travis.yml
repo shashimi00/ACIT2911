@@ -18,9 +18,12 @@ before_script:
 - npm install chai
 - npm install chai-http
 
-script:
-- "test.js" 
-
 services:
 - mongodb
 
+var url = "mongodb://localhost:27017/madmenDB"; 
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  console.log("Database created");
+  db.close();
+}); 
