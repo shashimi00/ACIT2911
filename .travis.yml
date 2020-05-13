@@ -2,6 +2,15 @@ language: node_js
 node_js:
 - "stable"
 
+install:
+- npm install
+- npm install mocha
+- npm install chai
+- npm install chai-http
+cache:
+  directories:
+    - "node_modules"
+
 before_install:
 - cd node 
 
