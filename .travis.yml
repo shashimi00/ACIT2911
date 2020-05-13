@@ -15,7 +15,7 @@ before_script:
 - cd tests
 - npm install mocha
 - npm install chai
-- npm chai-http
+- npm install chai-http
 
 services:
 - mongodb
