@@ -89,11 +89,56 @@ class ProductRepo {
         }
     }
 
-    async delete(id) {
+    async delete() {
         console.log("Id to be deleted is: " + id);
         let deletedItem = await Product.find({ _id: id }).remove().exec();
         console.log(deletedItem);
         return deletedItem;
+    }
+
+    async movieArray(movieName, review, star, author){
+        var movie = await Movie.findOne({movieName:movieName}).exec();
+
+        let reviewArray = movie.review;
+        if (reviewArray.length === 0){
+            reviewArray = [];
+        }
+        let newReviewEntry = {};
+
+        newReviewEntry['author'] = author;
+        newReviewEntry['star'] = star;
+        newReviewEntry['date']= new Date().toDateString();
+        newReviewEntry['reviews']= review;
+
+
+        for(let i=0; i<reviewArray.length; i++){
+            if(reviewArray[i]['author'] === author){
+                reviewArray.splice(i,1);
+            }
+        }
+
+        reviewArray.push(newReviewEntry);
+
+        await Movie.updateOne(
+            {movieName:movieName},
+            {$set: { review: reviewArray }}
+            );
+    }
+    
+    async deleteReview(movieId, author){
+        let movie = await Movie.findOne({_id:movieId}).exec();
+        let reviewArray = movie.review;
+
+        for(let i=0; i<reviewArray.length; i++){
+            if(reviewArray[i]['author'] === author){
+                reviewArray.splice(i,1);
+            }
+        }
+
+        await Movie.updateOne(
+            {_id:movieId},
+            {$set: { review: reviewArray }}
+        );
     }
 
 }

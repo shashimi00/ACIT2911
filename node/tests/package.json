@@ -1,6 +1,14 @@
-{
+{"nyc": {
+  "check-coverage": true,
+  "all": true,
+  "cwd": "../",
+  "exclude": [
+      "tests/*",
+      "coverage/*"
+  ]
+},
   "scripts": {
-    "test": "mocha"
+    "test":  "nyc --reporter=html mocha --timeout=5000"
   },
   "dependencies": {
     "chai": "^4.2.0",

@@ -4,6 +4,8 @@ import { MessengerService } from 'src/app/services/messenger.service'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitterService } from 'src/app/services/event-emitter.service'; 
 
+const BASE_URL = "http://localhost:1337/Product/";
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -14,15 +16,17 @@ export class CartComponent implements OnInit {
   _errorMessage:String = "";
 
   cartItems = [];
-  codes = ["Maxwell", "Harsimran", "Shabnam", "Aleaf", "SJPark","Angela","Taz" ]
+  codes = ["Maxwell", "Harsimran", "AleafVsShabnam", "SJPark","Angela","Taz" ]
   cartTotal = 0
   success = false;
   failure = false
+  order="";
 
 
   constructor(private msg: MessengerService, private http: HttpClient, private eventEmitterService: EventEmitterService    
     ) {
     this._http = http;
+    this.order = ""
    }
 
   ngOnInit() {
@@ -30,12 +34,6 @@ export class CartComponent implements OnInit {
       this.addProductToCart(product)
     })
 
-    if (this.eventEmitterService.subsVar==undefined) {    
-      this.eventEmitterService.subsVar = this.eventEmitterService.    
-      invokeFirstComponentFunction.subscribe(() => {    
-        this.submitOrder();    
-      });    
-    } 
   }
 
   clearPromo() {
@@ -66,18 +64,11 @@ export class CartComponent implements OnInit {
      if (product.qty == 0){
        this.cartItems.slice()
        const index = this.cartItems.indexOf(product)
-    // if (index> -1){
         this.cartItems.splice(index, 1)
-    // }
-    // this._quantity=0
      }
 
-    // this.cartTotal = 0
-    // this.cartItems.forEach(item => {
-    // this.cartTotal += (item.qty * item.price)
-    // }
-    // )
     this.total()
+    // this.submitOrder(product)
   }
 
   total() {
@@ -90,18 +81,10 @@ export class CartComponent implements OnInit {
   removeItem(item) {
 
     const index = this.cartItems.indexOf(item)
-    // if (index> -1){
         this.cartItems.splice(index, 1)
-    // }
-    // this._quantity=0
-
-    // for (var i=0;i<this.items.length;i++){
-    //     if (item._id == this.items[i]._id){
-    //         this._quantity++
-    //     }
-    // }
-    // item["num"] = this._quantity
+  
     this.total()
+    this.deleteProduct(item._id)
 }
 
 onEnter(value){
@@ -121,10 +104,33 @@ onEnter(value){
   }
 }
 
-  submitOrder() {
+deleteProduct(_id) {
+
+  const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }), 
+    "body": { _id:_id}
+  };
+
+  let url = BASE_URL + "Delete"
+  this.http.delete(  url , httpOptions) 
+  .subscribe(
+      // Data is received from the post request.
+      (data) => {
+          this._errorMessage = data["errorMessage"];
+          // this.getAllProducts(); 
+      },
+      // An error occurred. Data is not received. 
+      error  => {
+        this._errorMessage = error; 
+      });
+}
+
+
+  submitOrder(order) {
     // This free online service receives post submissions.
     this.http.post("http://localhost:1337/Order/Submit",
-    {userName:"sadas", total: this.cartTotal})
+    { name: order.productName, price: order.price, qty: 0})
+    // {cart: this.cartItems, total:this.cartTotal})
 .subscribe(
     // Data is received from the post request.
     (data) => {

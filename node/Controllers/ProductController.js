@@ -49,6 +49,9 @@ exports.CreateProduct = async function(request, response) {
     }
 };
 
+
+
+
 // This function receives an id when it is posted. 
 // It then performs the delete and shows the product listing after.
 // A nicer (future) version could take you to a page to confirm the deletion first.
@@ -61,4 +64,54 @@ exports.Delete = async function(request, response) {
     let products     = await _productRepo.allProducts();
     response.json( {products:products});
 }
+
+exports.Review  = function(req, res) {
+    let reqInfo = RequestService.reqHelper(req);
+
+    res.render('/Movie/Review', {errorMessage:"", reqInfo:reqInfo})
+};
+
+exports.Movie = async function(req, res){
+    let reqInfo = RequestService.reqHelper(req);
+    let movieID = req.query._id;
+    let _firstMovie = await _movieRepo.getMovieById(movieID);
+    let movieName = _firstMovie.movieName;
+
+
+    res.render("Movie/Review", {errorMessage: "", reqInfo: reqInfo, movieName: movieName})
+};
+
+exports.StoreReview = async function (req, res){
+    let reqInfo = RequestService.reqHelper(req);
+    let movieName = req.query._movieName;
+    let review = req.body.review;
+    let star = req.body.star;
+    let author = reqInfo.username;
+
+    if(star>=1 && star<=5 && star === "" + parseInt(star)){
+        await _movieRepo.movieArray(movieName, review, star, author);
+        res.redirect("/")
+    }
+    else{
+        res.render('Movie/Review', {errorMessage:"Rating has to be an integer between 1 and 5", reqInfo:reqInfo, movieName:movieName})
+    }
+
+};
+
+exports.MovieReviews = async function(req, res){
+    let reqInfo = RequestService.reqHelper(req);
+    let movieId = req.query._id;
+    let movieObj = await _movieRepo.getMovieById(movieId);
+
+    res.render("Movie/ViewReviews", {reqInfo:reqInfo, movie:movieObj})
+};
+
+exports.DeleteReview = async function(req, res){
+    let reqInfo = RequestService.reqHelper(req);
+    let movieId = parseInt(req.query._id);
+    let author = reqInfo.username;
+
+    await _movieRepo.deleteReview(movieId, author);
+    res.redirect('MyReviews')
+};
 

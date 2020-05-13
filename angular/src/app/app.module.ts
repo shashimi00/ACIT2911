@@ -20,6 +20,9 @@ import { LoginComponent } from './components/login/login.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { CreateComponent } from './components/admin/create/create.component';
 import { ListComponent } from './components/admin/list/list.component';
+import { ReviewComponent } from './components/review/review.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { RatingComponent } from './components/review/rating/rating.component';
 
 
 @NgModule({
@@ -39,7 +42,9 @@ import { ListComponent } from './components/admin/list/list.component';
     LoginComponent,
     AdminComponent,
     CreateComponent,
-    ListComponent
+    ListComponent,
+    ReviewComponent,
+    RatingComponent
   ],
   exports:[AppComponent,
     HeaderComponent,
@@ -56,9 +61,10 @@ import { ListComponent } from './components/admin/list/list.component';
     LoginComponent,
     AdminComponent,
     CreateComponent,
-    ListComponent],
+    ListComponent, 
+    FormsModule],
   imports: [
-    BrowserModule, FormsModule, HttpClientModule, routing
+    BrowserModule, FormsModule, HttpClientModule, routing, FontAwesomeModule
   ],
   providers: [EventEmitterService],
   bootstrap: [AppComponent]

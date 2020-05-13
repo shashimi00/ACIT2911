@@ -1,4 +1,4 @@
-<div class="col-md-3"  style="background-color: black;">
+<div class="col-md-3"  style="background-color: black; border: 4px white solid;">
   <div class="mb-3">
     <br>
     <label for="username" style="color: white"><b>Username</b></label>
@@ -16,14 +16,12 @@
     <label for="password" style="color: white"><b>Password </b> </label>
     <input type="TEXT" class="form-control" name="password" [(ngModel)]="password" placeholder="Password">
   </div>
-  
-  {{errorMessage}}
+ <span style="color:white">{{errorMessage}}</span> 
+ <br>
   <br>
 
-
-  <!-- <input class="submit" type="button" value="Login" (click)="login()"> -->
 </div>
 <div>
-<button class="col-md-3 btn btn-danger product-btn" type="submit" (click)="login()">Login</button>
+<button  style="border: 4px white solid; border-top: 0px;" class="col-md-3 btn btn-danger product-btn" type="submit" (click)="login()">Login</button>
 </div>
 

@@ -14,16 +14,15 @@ exports.Order = async function(request, response){
     }
 };
 
-// GET request calls here to display 'Product' submit form.
-exports.Create = async function(request, response) {
-    response.json( { errorMessage:"", order:{} });
-};
+
 
 exports.SubmitOrder = async function(request, response){
     let tempOrderObj = new Order({
-        "userName":request.body.userName,
-        // "cartItems":request.body.cartItems,
-        "total":request.body.total
+        // "_id":request.body._id,
+        "name":request.body.name,
+        // "cart":request.body.cart,
+        "price":request.body.price,
+         "qty":request.body.qty
     })
     
     let responseObject = await _orderRepo.create(tempOrderObj)
@@ -38,10 +37,24 @@ exports.SubmitOrder = async function(request, response){
     // There are errors. Show form the again with an error message.
     else {
         console.log("An error occured. Order not submitted.");
+        
         response.json( {
                         order:responseObject.obj,
                         errorMessage:responseObject.errorMessage});
     }
 
 }
+
+
+
+// exports.Delete = async function(request, response) {
+//     let id           = request.body._id;
+//     let deletedItem  = await _orderRepo.delete(id);
+
+//     // Some debug data to ensure the item is deleted.
+//     console.log(JSON.stringify(deletedItem));
+//     // let products     = await _productRepo.allProducts();
+//     // response.json( {products:products});
+// }
+
 

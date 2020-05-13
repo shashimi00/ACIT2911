@@ -1,4 +1,5 @@
 const Order = require('../Models/Order');
+var app = require('../app.js');
 
 class OrderRepo{
     
@@ -37,11 +38,23 @@ class OrderRepo{
         //  Error occurred during the save(). Return orginal model and error message.
         catch (err) {
             let response = {
-                obj:          productObj,
+                obj:          orderObj,
                 errorMessage: err.message };
     
             return  response;
         }    
     } 
+
+    async delete(id) {
+        console.log("Id to be deleted is: " + id);
+        let deletedItem = await Order.find({ _id: id }).remove().exec();
+        console.log(deletedItem);
+        return deletedItem;
+    }
+
+    async drop(coll){
+        app.mongoose.dropCollection(coll)
+    }
+    
 }
 module.exports = OrderRepo;

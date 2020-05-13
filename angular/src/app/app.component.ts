@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ApiService } from 'src/app/services/ApiService';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-root',
@@ -19,6 +21,8 @@ export class AppComponent {
   reqInfo:any           = null;
   _apiService:ApiService;
   public site='http://localhost:1337/';
+  faCoffee = faCoffee;
+
 
 
   // Since we are using a provider above we can receive 

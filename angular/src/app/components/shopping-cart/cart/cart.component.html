@@ -1,17 +1,5 @@
 <div *ngIf="cartItems.length === 0" class="alert alert-danger">Your Cart is Empty.</div>
 
-<!-- <div *ngIf="cartItems.length > 0" class="alert alert-info">
-  <div class="alert-info active">
-    <strong>Your Cart<span class="badge">{{ cartItems.length}}</span></strong>
-  </div>
-  <div class="alert alert-info" *ngFor="let item of cartItems">
-    <app-cart-item [cartItem]="item"></app-cart-item>
-  </div>
-
-  <div class="list-group-item active">
-    <strong>Total</strong> {{ cartTotal | currency:'USD' }}
-  </div>
-</div> -->
 <div *ngIf="cartItems.length > 0" class="card mb-4 shadow-sm">
   <div class="card-header"  style="background-color: black; color: white;" >
     <h4 class="card-title pricing-card-title text-danger">Your Cart</h4>
@@ -21,7 +9,7 @@
   
   <div class="card-body">
     <div class="list-unstyled mt-3 mb-4" *ngFor="let item of cartItems">
-      <app-cart-item [cartItem]="item"></app-cart-item>
+      <app-cart-item [cartItem]="item" style="color: black;"></app-cart-item>
       <button type="button" class="btn btn-danger float-right" (click)="removeItem()">Remove</button>
     </div>
     <div>

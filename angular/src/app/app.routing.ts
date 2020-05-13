@@ -9,6 +9,7 @@ import { RegisterComponent }     from './components/register/register.component'
 import { LoginComponent }        from './components/login/login.component';
 import { AdminComponent }        from './components/admin/admin.component'   
 import { CreateComponent }       from './components/admin/create/create.component'
+import { ReviewComponent }       from './components/review/review.component'
 
 const appRoutes: Routes = [
   { path: 'cart', component: CartComponent },
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
   { path: 'logout', component: ShoppingCartComponent},
   { path: 'admin', component: AdminComponent},
   { path: 'create', component: CreateComponent},
+  { path: 'review', component: ReviewComponent},
   // { path: 'orderSummary', component: OrderSummaryComponent },
   { path: '', component: LoginComponent  },
   // { path: '**', component: AppComponent }

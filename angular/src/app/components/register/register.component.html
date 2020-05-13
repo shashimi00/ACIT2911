@@ -45,7 +45,8 @@
 
   <div class="mb-3">
     <label for="password" style="color: white"><b>Password </b> </label>
-    <input type="text" class="form-control" name="password" [(ngModel)]="password" placeholder="Password">
+    <input type="text" class="form-control" name="password" [(ngModel)]="password" placeholder="Password" (keyup)=onKey($event)>
+    <progress max="5" value="0" id="strengthBar" style="width: 100%;"></progress>
   </div>
 
   <div class="mb-3">
@@ -57,9 +58,9 @@
   <b  style="color: white">Is this an Admin User?</b>
   <input mbdInput type="checkbox" name="admin" [(ngModel)]="admin">
   <br>
-
   <br>
 </div>
 <button class="col-md-4 btn btn-sm btn-danger product-btn" type="submit" (click)="addUser()">Sign Up</button>
 <br>
 <br>
+<script src="passwordcheck.component.js"></script>

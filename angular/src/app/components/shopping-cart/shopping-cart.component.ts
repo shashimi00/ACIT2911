@@ -20,5 +20,10 @@ export class ShoppingCartComponent implements OnInit {
 
   firstComponentFunction(){    
     this.eventEmitterService.onFirstComponentButtonClick();    
-  }  
+  } 
+
+  click(){
+    window.location.href = 'http://localhost:4200/payment';
+    // this.firstComponentFunction()
+  } 
 }

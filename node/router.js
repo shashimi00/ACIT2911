@@ -25,6 +25,9 @@ module.exports = function(app){
     app.delete('/Product/Delete', cors(), ProductController.Delete);
     app.get('/Order/Index', cors(), OrderController.Order);
     app.post('/Order/Submit', cors(), OrderController.SubmitOrder);
+    // app.delete('/Order/Delete', cors(), OrderController.Delete);
+    // app.put('/Order/Update', cors(), OrderController.Update);
+    
 
 // Sign in
     app.post(
