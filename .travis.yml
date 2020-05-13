@@ -22,4 +22,4 @@ services:
 - mongodb
 
 script: 
-- "./node_modules/mocha/bin/mocha *.test.js"
+- "./node_modules/mocha/bin/mocha *test.js"
