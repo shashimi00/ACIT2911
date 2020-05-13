@@ -9,6 +9,16 @@ var app = require('../app.js');
 chai.use(chaiHttp);
 chai.should();
 
+// travis ci stuff
+var url = "mongodb://localhost:27017/madmenDB";
+
+mongoose.createConnection(url, function(err, db) {
+    if (err) throw err;
+    console.log("Database created!");
+    db.close();
+});
+
+
 describe("Products API Tests", () => {
     before(function(){
         mongoose.createConnection('mongodb://localhost:27017/madmenDB')
