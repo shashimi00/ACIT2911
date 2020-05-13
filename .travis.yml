@@ -21,6 +21,7 @@ before_script:
 services:
 - mongodb
 
+script:
 var url = "mongodb://localhost:27017/madmenDB"; 
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
