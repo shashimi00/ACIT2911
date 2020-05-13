@@ -4,9 +4,6 @@ node_js:
 
 install:
 - npm install
-- npm install mocha
-- npm install chai
-- npm install chai-http
 cache:
   directories:
     - "node_modules"
@@ -16,6 +13,9 @@ before_install:
 
 before_script:
 - cd tests
+- npm install mocha
+- npm install chai
+- npm chai-http
 
 services:
 - mongodb
