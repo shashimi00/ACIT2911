@@ -18,6 +18,9 @@ before_script:
 - npm install chai
 - npm install chai-http
 
+script:
+- "test.js" 
+
 services:
 - mongodb
 
