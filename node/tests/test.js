@@ -1,5 +1,6 @@
 // imports dependencies for testing
 var chai = require('chai');
+var mocha = require('mocha');
 var mongoose = require('mongoose');
 var chaiHttp = require('chai-http');
 var app = require('../app.js');
