@@ -1,12 +1,9 @@
 // imports dependencies for testing
-import request from "superagent";
-
 var chai = require('chai');
 var superagent = require('superagent');
 var mongoose = require('mongoose');
 var chaiHttp = require('chai-http');
 var app = require('../app.js');
-var request = require('supertest');
 
 // Configures chai
 chai.use(chaiHttp);
