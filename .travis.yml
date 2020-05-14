@@ -27,5 +27,5 @@ before_script:
 services:
 - mongodb
 
-env:
-- YARN_GPG=no
+after_success:
+- echo "Done"
