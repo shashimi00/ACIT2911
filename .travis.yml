@@ -27,4 +27,5 @@ before_script:
 services:
 - mongodb
 
-YARN_GPG=no
+env:
+- YARN_GPG=no
