@@ -10,7 +10,7 @@ chai.use(chaiHttp);
 chai.should();
 
 // travis ci stuff
-var url = "mongodb://localhost:27017/madmenDB";
+var url = "mongodb://localhost:27017/mydb_test";
 
 mongoose.createConnection(url, function(err, db) {
     if (err) throw err;
