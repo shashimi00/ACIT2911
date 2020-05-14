@@ -12,7 +12,7 @@ before_install:
 - cd node
 
 before_script:
-- mongo mydb_test --eval 'db.products.insertMany( [ 
+- mongo mydb_test --eval 'db.products( [ 
 				{ _id:1, productName: 'Striped Tie', price:65.99,
 				  description: "black and blue silk tie"},
 				{ _id:2, productName: 'Leather shoes', price:120.99,
