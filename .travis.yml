@@ -12,7 +12,12 @@ before_install:
 - cd node
 
 before_script:
-- mongo mydb_test --eval 'db.products([{_id:1, productName:"Striped Tie", price:65.99, description:"black and blue silk tie"}), {_id:2, productName:"Leather shoes", price:120.99, description:"vintage smooth men's leather boots"}, {_id:3, productName:"Dress shirt", price:140.99, description:"slim fit blue men's dress shirt"},{_id:4, productName:"Dress pants", price:175.99, description:"charcoal men's dress pants"},{_id:5, productName:"Bowtie", price:42.99, description:"classic silk floral bowtie"});'
+- mongo mydb_test --eval 'db.products.insertOne([{_id:1, productName:"Striped Tie", price:65.99, description:"black and blue silk tie"});'
+'db.products.insertOne({_id:2, productName:"Leather shoes", price:120.99, description:"vintage smooth men's leather boots"});'
+'db.products.insertOne({_id:3, productName:"Dress shirt", price:140.99, description:"slim fit blue men's dress shirt"});'
+'db.products.insertOne({_id:4, productName:"Dress pants", price:175.99, description:"charcoal men's dress pants"});'
+'db.products.insertOne({_id:5, productName:"Bowtie", price:42.99, description:"classic silk floral bowtie"});'
+
 - sleep 15
 - cd tests
 - npm install mocha
