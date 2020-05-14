@@ -27,5 +27,4 @@ before_script:
 services:
 - mongodb
 
-after_success:
-- echo "Done"
+
