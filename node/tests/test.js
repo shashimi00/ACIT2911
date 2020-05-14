@@ -2,6 +2,7 @@
 import request from "superagent";
 
 var chai = require('chai');
+var superagent = require('superagent');
 var mongoose = require('mongoose');
 var chaiHttp = require('chai-http');
 var app = require('../app.js');
@@ -11,42 +12,14 @@ var request = require('supertest');
 chai.use(chaiHttp);
 chai.should();
 
-describe("User API Tests", () => {
-    // pass to the login method
-    const userInfo = {
-        username: 'jamesfranco',
-        password: 'x'
-    };
+// travis ci stuff
+var url = "mongodb://localhost:27017/madmenDB";
 
-    // login user before running tests
-    var authenticatedUser = request.agent(app);
-
-    before(function(done){
-        authenticatedUser
-            .post('/User/Login')
-            .send(userInfo)
-            .end(function(err, response){
-                expect(response.statusCode).to.equal(200);
-                expect('Location', '/User/SecureArea');
-                done();
-            })
-    });
-
-    describe('GET /User/SecureArea', () => {
-        // if user is logged in, status code = 200
-        it('should return 200 if user is logged in', (done) => {
-            authenticatedUser.get('/User/SecureArea')
-                .expect(200, done);
-        });
-
-        // if user fails to login, redirect to /User/Login?errorMessage=Invalid login.
-        it('should redirect to error page', (done) => {
-            request(app).get('/User/SecureArea')
-                .expect('Location', '/User/Login?errorMessage=Invalid login.')
-        });
-    })
+mongoose.createConnection(url, function(err, db) {
+    if (err) throw err;
+    console.log("Database created!");
+    db.close();
 });
-
 
 
 describe("Products API Tests", () => {
@@ -103,7 +76,7 @@ describe("Products API Tests", () => {
         })
 
         // // Perform a POST test.
-        it("Tests POST request from API.", 
+        it("Tests POST request from API.",
              (done) => {
              const id = 5;
              chai.request(app)

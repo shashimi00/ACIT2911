@@ -1,0 +1,30 @@
+language: node_js 
+node_js:
+- "stable"
+
+install:
+- npm install
+cache:
+  directories:
+    - "node_modules"
+
+before_install:
+- cd node
+
+before_script:
+- sleep 15
+- mongo madmenDB --eval 'db.products.insertOne({_id:1, productName:"Striped Tie", price:65.99, description:"black and blue silk tie"})';
+- mongo madmenDB --eval 'db.products.insertOne({_id:2, productName:"Leather shoes", price:99.99, description:"vintage smooth mens leather boots"})';
+- mongo madmenDB --eval 'db.products.insertOne({_id:3, productName:"Dress shirt", price:140.99, description:"slim fit blue mens dress shirt"})';
+- mongo madmenDB --eval 'db.products.insertOne({_id:4, productName:"Dress pants", price:175.99, description:"charcoal mens dress pants"})';
+- mongo madmenDB --eval 'db.products.insertOne({_id:5, productName:"Bowtie", price:42.99, description:"classic silk floral bowtie"})';
+- cd tests
+- npm install mocha
+- npm install chai
+- npm install chai-http
+- npm install superagent
+
+services:
+- mongodb
+
+
