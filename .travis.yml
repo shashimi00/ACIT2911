@@ -13,11 +13,11 @@ before_install:
 
 before_script:
 - sleep 15
-- mongo mydb_test --eval 'db.products.insertOne({_id:1, productName:"Striped Tie", price:65.99, description:"black and blue silk tie"});'
-- mongo mydb_test --eval 'db.products.insertOne({_id:2, productName:"Leather shoes", price:120.99, description:"vintage smooth men's leather boots"});'
-- mongo mydb_test --eval 'db.products.insertOne({_id:3, productName:"Dress shirt", price:140.99, description:"slim fit blue men's dress shirt"});'
-- mongo mydb_test --eval 'db.products.insertOne({_id:4, productName:"Dress pants", price:175.99, description:"charcoal men's dress pants"});'
-- mongo mydb_test --eval 'db.products.insertOne({_id:5, productName:"Bowtie", price:42.99, description:"classic silk floral bowtie"});'
+- mongo mydb_test --eval 'db.products.insertOne({_id:1, productName:"Striped Tie", price:65.99, description:"black and blue silk tie"})'
+- mongo mydb_test --eval 'db.products.insertOne({_id:2, productName:"Leather shoes", price:120.99, description:"vintage smooth men's leather boots"})'
+- mongo mydb_test --eval 'db.products.insertOne({_id:3, productName:"Dress shirt", price:140.99, description:"slim fit blue men's dress shirt"})'
+- mongo mydb_test --eval 'db.products.insertOne({_id:4, productName:"Dress pants", price:175.99, description:"charcoal men's dress pants"})'
+- mongo mydb_test --eval 'db.products.insertOne({_id:5, productName:"Bowtie", price:42.99, description:"classic silk floral bowtie"})'
 - cd tests
 - npm install mocha
 - npm install chai
