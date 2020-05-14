@@ -27,5 +27,4 @@ before_script:
 services:
 - mongodb
 
-after_success:
-- travis_terminate 0
+YARN_GPG=no
