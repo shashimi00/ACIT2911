@@ -22,7 +22,7 @@ before_script:
 				{ _id:4, productName: 'Dress pants', price:175.99,
 				  description: "charcoal men's dress pants"},
 				{ _id:5, productName: 'Bowtie', price:42.99, 
-				  description: "classic silk floral bowtie"} ] );'
+				  description: "classic silk floral bowtie"} ] )'
 
 - sleep 15
 - cd tests
