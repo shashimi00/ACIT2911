@@ -74,6 +74,22 @@ describe("Products API Tests", () => {
                     done();
                 });
         })
+        
+         it("Testing product descriptions", (done) => {
+            chai.request(app)
+                .get(`/Product/Index`)
+                .end((err, res) => {
+                    // // Extract 'products' from API response
+                    let products = res.body.products;
+                    // // Ensure value is correct
+                    products[0]["description"].should.equal("black and blue silk tie");
+                    products[1]["description"].should.equal("vintage smooth mens leather boots");
+                    products[2]["description"].should.equal("slim fit blue mens dress shirt");
+                    products[3]["description"].should.equal("charcoal mens dress pants");
+                    products[4]["description"].should.equal("classic silk floral bowtie");
+                    done();
+                });
+        })
 
         // // Perform a POST test.
         it("Tests POST request from API.",
