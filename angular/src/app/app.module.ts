@@ -15,6 +15,16 @@ import { ProductItemComponent } from './components/shopping-cart/product-list/pr
 import { routing }        from './app.routing';
 import { EventEmitterService } from './services/event-emitter.service';
 import { PaymentComponent } from './components/payment/payment.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { CreateComponent } from './components/admin/create/create.component';
+import { ListComponent } from './components/admin/list/list.component';
+import { ReviewComponent } from './components/review/review.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { RatingComponent } from './components/review/rating/rating.component';
+import { ModalService } from './services/modal.service';
+import { ViewComponent } from './components/review/view/view.component';
 
 
 @NgModule({
@@ -29,12 +39,37 @@ import { PaymentComponent } from './components/payment/payment.component';
     CartComponent,
     CartItemComponent,
     ProductItemComponent,
-    PaymentComponent
+    PaymentComponent,
+    RegisterComponent,
+    LoginComponent,
+    AdminComponent,
+    CreateComponent,
+    ListComponent,
+    ReviewComponent,
+    RatingComponent,
+    ViewComponent
   ],
+  exports:[AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    NavComponent,
+    ShoppingCartComponent,
+    FiltersComponent,
+    ProductListComponent,
+    CartComponent,
+    CartItemComponent,
+    ProductItemComponent,
+    PaymentComponent,
+    RegisterComponent,
+    LoginComponent,
+    AdminComponent,
+    CreateComponent,
+    ListComponent, 
+    FormsModule],
   imports: [
-    BrowserModule, FormsModule, HttpClientModule, routing
+    BrowserModule, FormsModule, HttpClientModule, routing, FontAwesomeModule
   ],
-  providers: [EventEmitterService],
+  providers: [EventEmitterService, ModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

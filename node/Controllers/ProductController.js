@@ -21,7 +21,7 @@ exports.Detail = async function(request, response) {
     
     let productObj = await _productRepo.getProduct(productID);
     response.json( { product:productObj });
-};
+}
 
 // GET request calls here to display 'Product' create form.
 exports.Create = async function(request, response) {
@@ -30,38 +30,27 @@ exports.Create = async function(request, response) {
 
 // Receives POST data and tries to save it.
 exports.CreateProduct = async function(request, response) {
-
-    // Package object up nicely using content from 'body'
-    // of the POST request.
-    imgPath = request.body.path;
     let tempProductObj  = new Product( {
-        "_id":request.body._id,
-        "productName":    request.body.productName,
-        "price":request.body.price,
-        "description": request.body.description
+        "_id":request.body._id, "productName":    request.body.productName,
+        "price":request.body.price,"description": request.body.description
     });
-
-    // tempProductObj.image.data = fs.readFileSync(imgPath)
-    // tempProductObj.image.contentType = 'png'
-
     // Call Repo to save 'Product' object.
     let responseObject = await _productRepo.create(tempProductObj);
 
-    // No errors so save is successful.
     if(responseObject.errorMessage == "") {
         console.log('Saved without errors.');
-        console.log(JSON.stringify(responseObject.obj));
         response.json({ product:responseObject.obj,
                                             errorMessage:""});
-    }
-    // There are errors. Show form the again with an error message.
-    else {
+    }else {
         console.log("An error occured. Item not created.");
         response.json( {
                         product:responseObject.obj,
                         errorMessage:responseObject.errorMessage});
     }
 };
+
+
+
 
 // This function receives an id when it is posted. 
 // It then performs the delete and shows the product listing after.
@@ -74,5 +63,55 @@ exports.Delete = async function(request, response) {
     console.log(JSON.stringify(deletedItem));
     let products     = await _productRepo.allProducts();
     response.json( {products:products});
+}
+
+exports.Review  = function(req, res) {
+    let reqInfo = RequestService.reqHelper(req);
+
+    res.render('/Movie/Review', {errorMessage:"", reqInfo:reqInfo})
+};
+
+exports.Movie = async function(req, res){
+    let reqInfo = RequestService.reqHelper(req);
+    let movieID = req.query._id;
+    let _firstMovie = await _movieRepo.getMovieById(movieID);
+    let movieName = _firstMovie.movieName;
+
+
+    res.render("Movie/Review", {errorMessage: "", reqInfo: reqInfo, movieName: movieName})
+};
+
+exports.StoreReview = async function (req, res){
+    let reqInfo = RequestService.reqHelper(req);
+    let movieName = req.query._movieName;
+    let review = req.body.review;
+    let star = req.body.star;
+    let author = reqInfo.username;
+
+    if(star>=1 && star<=5 && star === "" + parseInt(star)){
+        await _movieRepo.movieArray(movieName, review, star, author);
+        res.redirect("/")
+    }
+    else{
+        res.render('Movie/Review', {errorMessage:"Rating has to be an integer between 1 and 5", reqInfo:reqInfo, movieName:movieName})
+    }
+
+};
+
+exports.MovieReviews = async function(req, res){
+    let reqInfo = RequestService.reqHelper(req);
+    let movieId = req.query._id;
+    let movieObj = await _movieRepo.getMovieById(movieId);
+
+    res.render("Movie/ViewReviews", {reqInfo:reqInfo, movie:movieObj})
+};
+
+exports.DeleteReview = async function(req, res){
+    let reqInfo = RequestService.reqHelper(req);
+    let movieId = parseInt(req.query._id);
+    let author = reqInfo.username;
+
+    await _movieRepo.deleteReview(movieId, author);
+    res.redirect('MyReviews')
 };
 

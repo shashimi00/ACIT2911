@@ -1,115 +1,144 @@
 const Product = require('../Models/Product');
 
 class ProductRepo {
-    
+
     // This is the constructor.
-    ProductRepo() {        
+    ProductRepo() {
     }
 
     // Gets all products.
-    async allProducts() {     
+    async allProducts() {
         let products = await Product.find().exec();
-        return   products;
+        return products;
     }
 
-    async getProduct(id) {  
-        let product = await Product.findOne({_id:id}).exec();
-        return   product;
+    async getProduct(id) {
+        let product = await Product.findOne({ _id: id }).exec();
+        return product;
     }
 
     async create(productObj) {
-        try {
-            // Checks if model conforms to validation rules that we set in Mongoose.
-            var error = await productObj.validateSync();
-    
-            // The model is invalid. Return the object and error message. 
-            if(error) {
-                let response = {
-                    obj:          productObj,
-                    errorMessage: error.message };
-    
-                return response; // Exit if the model is invalid.
-            } 
-    
-            // Model is not invalid so save it.
+        try {var error = await productObj.validateSync();
+            if (error) {
+                let response = { obj: productObj, errorMessage: error.message };
+                return response;  }
+
             const result = await productObj.save();
-    
-            // Success! Return the model and no error message needed.
-            let response = {
-                obj:          result,
-                errorMessage: "" };
-    
-            return response;
-        } 
+            let response = {obj: result,errorMessage: ""};
+            return response;}
+
         //  Error occurred during the save(). Return orginal model and error message.
         catch (err) {
-            let response = {
-                obj:          productObj,
-                errorMessage: err.message };
-    
-            return  response;
-        }    
-    } 
-    
-    async update(editedObj) {   
-    
+            let response = {obj: productObj, errorMessage: err.message };
+            return response;}
+    }
+
+    async update(editedObj) {
+
         // Set up response object which contains origianl product object and empty error message.
         let response = {
-            obj:          editedObj,
-            errorMessage: "" };
-    
+            obj: editedObj,
+            errorMessage: ""
+        };
+
         try {
             // Ensure the content submitted by the user validates.
             var error = await editedObj.validateSync();
-            if(error) {
+            if (error) {
                 response.errorMessage = error.message;
                 return response;
-            } 
-    
+            }
+
             // Load the actual corresponding object in the database.
             let productObject = await this.getProduct(editedObj.id);
-    
+
             // Check if product exists.
-            if(productObject) {
-    
+            if (productObject) {
+
                 // Product exists so update it.
                 let updated = await Product.updateOne(
-                    { _id: editedObj.id}, // Match id.
-    
+                    { _id: editedObj.id }, // Match id.
+
                     // Set new attribute values here.
-                    {$set: { productName: editedObj.productName }}); 
-    
+                    { $set: { productName: editedObj.productName } });
+
                 // No errors during update.
-                if(updated.nModified!=0) {
+                if (updated.nModified != 0) {
                     response.obj = editedObj;
                     return response;
                 }
                 // Errors occurred during the update.
                 else {
-                    respons.errorMessage = 
-                        "An error occurred during the update. The item did not save." 
+                    respons.errorMessage =
+                        "An error occurred during the update. The item did not save."
                 };
-                return response; 
+                return response;
             }
-                
+
             // Product not found.
             else {
-                response.errorMessage = "An item with this id cannot be found." };
-                return response; 
-            }
-    
-                    // An error occurred during the update. 
+                response.errorMessage = "An item with this id cannot be found."
+            };
+            return response;
+        }
+
+        // An error occurred during the update. 
         catch (err) {
             response.errorMessage = err.message;
-            return  response;
-        }    
-    }  
-    
-    async delete(id) {
+            return response;
+        }
+    }
+
+    async delete() {
         console.log("Id to be deleted is: " + id);
-        let deletedItem =  await Product.find({_id:id}).remove().exec();
+        let deletedItem = await Product.find({ _id: id }).remove().exec();
         console.log(deletedItem);
         return deletedItem;
+    }
+
+    async movieArray(movieName, review, star, author){
+        var movie = await Movie.findOne({movieName:movieName}).exec();
+
+        let reviewArray = movie.review;
+        if (reviewArray.length === 0){
+            reviewArray = [];
+        }
+        let newReviewEntry = {};
+
+        newReviewEntry['author'] = author;
+        newReviewEntry['star'] = star;
+        newReviewEntry['date']= new Date().toDateString();
+        newReviewEntry['reviews']= review;
+
+
+        for(let i=0; i<reviewArray.length; i++){
+            if(reviewArray[i]['author'] === author){
+                reviewArray.splice(i,1);
+            }
+        }
+
+        reviewArray.push(newReviewEntry);
+
+        await Movie.updateOne(
+            {movieName:movieName},
+            {$set: { review: reviewArray }}
+            );
+    }
+    
+    async deleteReview(movieId, author){
+        let movie = await Movie.findOne({_id:movieId}).exec();
+        let reviewArray = movie.review;
+
+        for(let i=0; i<reviewArray.length; i++){
+            if(reviewArray[i]['author'] === author){
+                reviewArray.splice(i,1);
+            }
+        }
+
+        await Movie.updateOne(
+            {_id:movieId},
+            {$set: { review: reviewArray }}
+        );
     }
 
 }

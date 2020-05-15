@@ -4,7 +4,9 @@ var ProductSchema = mongoose.Schema({
     _id:            {"type" : Number },
     productName:    {"type" : "String"},
     price:          {"type": Number},
-    description:    {"type": "String"}
+    description:    {"type": "String"},
+    review:[]
+
     // path:           {"type":String},
     // image:          {data: Buffer, contenttype: String}
 },

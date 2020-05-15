@@ -1,0 +1,25 @@
+
+<div class="col-md-6" style=" border:8px white solid; padding: 20px;">
+    <h4 style="color:red; font-size: xx-large;">Product Review </h4>
+    
+<div class="form-group ">
+  <label style="color:white;"><strong>Product Name</strong></label>
+  <input type="text"  [(ngModel)]="name" placeholder="Product name"/>
+  <br><br>
+    <textarea class="form-control" id="inputReview" rows="5" placeholder="Write your review here" [(ngModel)]="inputReview"></textarea>
+  </div>
+
+  <div class="star">
+  <fa-icon [icon]="faStar" [class.rate]="rating>=1" style="font-size: 40px;" (click)="changeRating(1)"></fa-icon>
+  <fa-icon [icon]="faStar" [class.rate]="rating>=2" style="font-size: 40px;" (click)="changeRating(2)"></fa-icon>
+  <fa-icon [icon]="faStar" [class.rate]="rating>=3" style="font-size: 40px;" (click)="changeRating(3)"></fa-icon>
+  <fa-icon [icon]="faStar" [class.rate]="rating>=4" style="font-size: 40px;" (click)="changeRating(4)"></fa-icon>
+  <fa-icon [icon]="faStar" [class.rate]="rating>=5" style="font-size: 40px;" (click)="changeRating(5)"></fa-icon>
+  <br><label style="font-size: 30px;">{{performance}}</label>
+  
+</div>
+<button type="button" class="btn btn-danger" style="border:3px white solid;" (click)="submit(inputReview, name)">Submit response</button>
+<br><br>
+</div>  
+
+
