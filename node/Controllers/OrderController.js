@@ -47,14 +47,14 @@ exports.SubmitOrder = async function(request, response){
 
 
 
-// exports.Delete = async function(request, response) {
-//     let id           = request.body._id;
-//     let deletedItem  = await _orderRepo.delete(id);
+exports.Delete = async function(request, response) {
+    let id           = request.body._id;
+    let deletedItem  = await _orderRepo.delete(id);
 
-//     // Some debug data to ensure the item is deleted.
-//     console.log(JSON.stringify(deletedItem));
-//     // let products     = await _productRepo.allProducts();
-//     // response.json( {products:products});
-// }
+    // Some debug data to ensure the item is deleted.
+    console.log(JSON.stringify(deletedItem));
+    // let products     = await _productRepo.allProducts();
+    // response.json( {products:products});
+}
 
 

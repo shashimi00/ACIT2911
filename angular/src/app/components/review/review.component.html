@@ -1,8 +1,11 @@
 
 <div class="col-md-6" style=" border:8px white solid; padding: 20px;">
-    <h4 style="color:red; font-size: xx-large;">Product Review</h4>
-    
+    <h4 style="color:red; font-size: xx-large;">Product Review </h4>
+    <br>
 <div class="form-group ">
+  <label style="color:white;"><strong>Product Name</strong></label>
+  <span style="padding-left: 8px;"><input type="text"  [(ngModel)]="name" placeholder=""/></span>
+  <br><br>
     <textarea class="form-control" id="inputReview" rows="5" placeholder="Write your review here" [(ngModel)]="inputReview"></textarea>
   </div>
 
@@ -15,7 +18,7 @@
   <br><label style="font-size: 30px;">{{performance}}</label>
   
 </div>
-<button type="button" class="btn btn-danger" style="border:3px white solid;" (click)="submit(inputReview)">Submit response</button>
+<button type="button" class="btn btn-danger" style="border:3px white solid;" (click)="submit(inputReview, name)">Submit response</button>
 <br><br>
 </div>  
 

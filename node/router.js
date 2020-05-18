@@ -2,6 +2,7 @@ var HomeController = require('./Controllers/HomeController');
 var ProductController = require('./Controllers/ProductController');
 var OrderController = require('./Controllers/OrderController');
 var UserController   = require('./Controllers/UserController');
+var ReviewController = require('./Controllers/ReviewController');
 
 const authMiddleware = require('./authHelper')
 const cors           = require('cors');
@@ -25,8 +26,9 @@ module.exports = function(app){
     app.delete('/Product/Delete', cors(), ProductController.Delete);
     app.get('/Order/Index', cors(), OrderController.Order);
     app.post('/Order/Submit', cors(), OrderController.SubmitOrder);
-    // app.delete('/Order/Delete', cors(), OrderController.Delete);
-    // app.put('/Order/Update', cors(), OrderController.Update);
+    app.delete('/Order/Delete', cors(), OrderController.Delete);
+    app.get('/Review/Index', cors(), ReviewController.Review);
+    app.post('/Review/Submit', cors(), ReviewController.SubmitReview);
     
 
 // Sign in

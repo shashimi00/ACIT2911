@@ -14,6 +14,9 @@
         <a class="nav-link" href="shoppingCart"  style="color:white">Shop</a>
       </li>
       <li>
+        <a class="nav-link" href="viewReviews"  style="color:white">Reviews</a>
+      </li>
+      <li>
         <a class="nav-link" href='payment'  style="color:white">Checkout</a>
       </li>
       <li class="nav-item">
@@ -31,14 +34,10 @@
     </ul>
   </div>
 </nav>
-<fa-icon [icon]="faCoffee"></fa-icon>
 
 <br>
 <div class="container" align="center">
   <router-outlet></router-outlet>
 </div>
 <br>
-<!-- Custom modal setup -->
-<div id="modal-container" class="hidden"></div>
-<div id="overlay" (click)="removeModal()" class="hidden"></div>
 

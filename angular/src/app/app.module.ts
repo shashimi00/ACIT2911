@@ -23,6 +23,8 @@ import { ListComponent } from './components/admin/list/list.component';
 import { ReviewComponent } from './components/review/review.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RatingComponent } from './components/review/rating/rating.component';
+import { ModalService } from './services/modal.service';
+import { ViewComponent } from './components/review/view/view.component';
 
 
 @NgModule({
@@ -44,7 +46,8 @@ import { RatingComponent } from './components/review/rating/rating.component';
     CreateComponent,
     ListComponent,
     ReviewComponent,
-    RatingComponent
+    RatingComponent,
+    ViewComponent
   ],
   exports:[AppComponent,
     HeaderComponent,
@@ -66,7 +69,7 @@ import { RatingComponent } from './components/review/rating/rating.component';
   imports: [
     BrowserModule, FormsModule, HttpClientModule, routing, FontAwesomeModule
   ],
-  providers: [EventEmitterService],
+  providers: [EventEmitterService, ModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

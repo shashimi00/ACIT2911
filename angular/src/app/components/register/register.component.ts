@@ -15,11 +15,15 @@ export class RegisterComponent implements OnInit {
   passConf: string = '';
   admin: boolean = false;
   errorMessage: string = '';
+  score: any
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    this.score = 0
+  }
 
   ngOnInit() {
   }
+
   validateUser() {
     let userList = [this.username, this.email, this.firstName, this.lastName, this.password];
     for (let i=0; i<userList.length; i++) {
@@ -28,6 +32,15 @@ export class RegisterComponent implements OnInit {
       }
     }
     return this.password == this.passConf;
+  }
+
+  validate(){
+    if (this.score <5){
+      this.errorMessage = "Please enter a strong password"
+    }
+    else{
+      this.addUser
+    }
   }
 
   addUser() {
@@ -73,27 +86,27 @@ export class RegisterComponent implements OnInit {
     // }
     var score = 0;
     if(values.match(/[a-z][a-z]+/)){
-        score+=1;
+        this.score+=1;
         console.log('Check 1 done')
     }
     if (values.match(/[A-Z]+/)){
-        score+=1;
+      this.score+=1;
         console.log('Check 2 done')
     }
     if (values.match(/[!"#$%&'()*+,-./:;<=>?@^_`~]+/)){
-        score+=1;
+      this.score+=1;
         console.log('Check 3 done')
     }
     if(values.match(/[0-9]+/)){
-        score+=1;
+      this.score+=1;
         console.log('Check 4 done')
     }
     if (values.length > 7 ){
-        score +=1;
+      this.score +=1;
         console.log('Check 5 done')
     }
-    console.log(`The password score is:${score}`)
-    barLevel.value = score.toString()
+    console.log(`The password score is:${this.score}`)
+    barLevel.value = this.score.toString()
 }
   
 }
