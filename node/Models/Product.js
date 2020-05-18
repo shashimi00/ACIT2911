@@ -5,9 +5,9 @@ var ProductSchema = mongoose.Schema({
     productName:    {"type" : "String"},
     price:          {"type": Number},
     description:    {"type": "String"},
-    review:[]
+    // review:[],
 
-    // path:           {"type":String},
+    path:           {"type":String},
     // image:          {data: Buffer, contenttype: String}
 },
 { collection : 'products' },

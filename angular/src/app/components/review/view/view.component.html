@@ -1,12 +1,12 @@
 
-<h4 style="color:red; font-size: xx-large;">Product reviews</h4>
+<h4 style="color:red; font-size: xx-large;">Customer reviews</h4>
 <div class="container">
 <div class="row">
     <div class="col-md-4" *ngFor="let review of reviews">
-        <div class="card mb-4 shadow-sm" style="background-color: black; border: 4px white solid; padding: 1px;">
+        <div class="card mb-4 shadow-sm" style="background-color: black; border: 4px white solid; padding: 1px; height: 175px;">
             <div class="card-body" style="padding: 12px;">
                 <p class="card-text" style="color:white;" align="left"><strong>{{ review.name }}</strong></p>
-                <p class="card-text" style="color:white;" align="left">@{{ review.userName }}                <span class="card-text text-muted" style="color:white;" align="left">{{ review.review }}</span>
+                <p class="card-text  text-muted" style="color:white;" align="left">@{{ review.userName }}                <span class="card-text" style="color:white;" align="left">{{ review.review }}</span>
                 </p>
 
 
@@ -28,8 +28,9 @@
     </div>
 </div>
     <div>
-    <div  align="center">
-        <button type="button" class="btn btn-danger" style="border:3px white solid;" (click)="writeReview()">Write a review</button>
+    <div align="center">
+        <button type="button" class="btn btn-danger" style="border:3px white solid ; width: 300px;" (click)="writeReview()">Write a review</button>
     </div>
-    <div *ngIf="guest" class="alert alert-danger">You must be logged in to write a review</div>
+    <br>
+    <div *ngIf="guest" class="alert alert-danger col-md-4">You must be logged in to write a review</div>
 </div>

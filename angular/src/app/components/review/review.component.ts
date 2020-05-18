@@ -17,7 +17,7 @@ export class ReviewComponent implements OnInit {
   rating = 0
   performance = ""
   array = ["Bad :(", "Neutral :|", "Good:)", "Very Good!", "Excellent!!"]
-
+empty = "  "
   admin = false;
   username = '';
   token = '';
@@ -77,7 +77,6 @@ export class ReviewComponent implements OnInit {
     }
   }
 
-
   changeRating(rating) {
     this.rated = !this.rated
     this.rating = rating;
@@ -85,9 +84,7 @@ export class ReviewComponent implements OnInit {
   }
 
   submit(inputReview, productName) {
-    if (this.username="" ){
-this.username = "anonymous"
-    }
+
     // This free online service receives post submissions.
     this.http.post("http://localhost:1337/Review/Submit",
       { userName: this.username, name: productName, review: inputReview, rating: this.rating })
@@ -99,7 +96,7 @@ this.username = "anonymous"
           console.log("POST call successful. Inspect response.",
             JSON.stringify(data));
           this._errorMessage = data["errorMessage"];
-          // window.location.href = "http://localhost:4200/viewReviews";
+          window.location.href = "http://localhost:4200/viewReviews";
         },
         // An error occurred. Data is not received. 
         error => {

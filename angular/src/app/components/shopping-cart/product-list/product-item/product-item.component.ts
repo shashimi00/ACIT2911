@@ -14,24 +14,45 @@ export class ProductItemComponent implements OnInit {
   _errorMessage:String = "";
   orders=[]
   message:string;
+  // photo:string;
 
+  // img = new Image();
+   
+  //  source:string
 
+   
+   
+ 
   @Input() productItem: Product
   // @Output() messageEvent = new EventEmitter<string>();
 
-  constructor(private msg: MessengerService, private http: HttpClient, private name: ModalService) { }
+  constructor(private msg: MessengerService, private http: HttpClient, private name: ModalService) { 
+// this.photo = "<img src = 'https://images-na.ssl-images-amazon.com/images/I/51gwvAAo78L._UY395_.jpg'>"
+// div = document.getElementById('x');
+  // this.source = "https://images-na.ssl-images-amazon.com/images/I/51gwvAAo78L._UY395_.jpg"
+}
 
   ngOnInit() {
+    // this.photo()
   }
+
+ 
+// photo() {
+//   var myloc = new Image();  
+//   myloc.useMap = this.source;  
+//   var img = document.createElement('img')  
+//   img.setAttribute('src', myloc.useMap);  
+//   img.setAttribute('style', "height:149px;width:280px;");  
+//   var place = document.getElementById("photo")
+//   place.appendChild(img);  
+// }
+
+
 
   handleAddToCart() {
     this.msg.sendMsg(this.productItem)
     this.submitOrder(this.productItem)
   }
-
-  // public close() {
-  //   this.modalService.destroy();
-  // }
 
   getAllOrders() {
     let url = 'http://localhost:1337/Order/Index'
@@ -48,11 +69,8 @@ export class ProductItemComponent implements OnInit {
 
   submitOrder(order) {
     // This free online service receives post submissions.
-
-
     this.http.post("http://localhost:1337/Order/Submit",
     {name: order.productName, price: order.price, qty: 1})
-    // {cart: this.cartItems, total:this.cartTotal})
 .subscribe(
     // Data is received from the post request.
     (data) => {
@@ -67,8 +85,6 @@ export class ProductItemComponent implements OnInit {
         this._errorMessage = error;                
     });
   }
-
-  
 
   review(){
     this.name.sendProduct(this.productItem)

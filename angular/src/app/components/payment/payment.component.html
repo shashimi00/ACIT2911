@@ -29,53 +29,57 @@
 
 <router-outlet></router-outlet>
 
-<div class="container" >
-    <div class="py-5 text-center">
+<div class="container" style="background-color: black; color:red">
+    <!-- <div class="py-5 text-center"> -->
         <!-- <img class="d-block mx-auto mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
-        <h2  style="background-color: black; color:red;border: 4px white solid; padding:15px">Checkout form</h2>
-    </div>
+        <!-- <h2  style="background-color: black; color:red; padding:15px">Checkout form</h2>
+    </div> -->
 
     <div class="row">
-        <div class="col-md-4 order-md-2 mb-4" >
-            <h4 class="d-flex justify-content-between align-items-center mb-3">
-                <span class="text-muted">Your cart</span>
+        <div class="col-md-4 order-md-2 mb-4"  style="color:white" >
+            <h4 class="d-flex justify-content-between align-items-center mb-3" >
+                <span style="color:white">Your cart</span>
                 <span class="badge badge-secondary badge-pill">{{orders.length}}</span>
             </h4>
-            <ul class="list-group mb-3">
+            <div class="alert alert-danger" *ngIf="cart.length==0">Your cart is empty</div>
+            <ul  *ngIf="cart.length!=0" class="list-group mb-3"  style="color:red" >
                 <li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let item of cart">
                     <div>
 
-                        <h6 class="my-0">{{item.productName}}</h6>
+                        <h6 class="my-0">{{item.productName}} ({{item.qty}})</h6>
                     </div>
                     <div>
                     </div>
 
-                    <span class="text-muted" align="right">${{item.price}}</span>
-                    <span class="badge badge-secondary badge-pill">{{item.qty}}</span>
+                    <span class="text-muted" align="right">{{(item.price*item.qty) | currency:'USD'}}</span>
+                    <!-- <span class="badge badge-secondary badge-pill">{{item.qty}}</span> -->
 
                 </li>
-                <li class="list-group-item d-flex justify-content-between bg-light">
+                <li  *ngIf="success" class="list-group-item d-flex justify-content-between bg-light">
                     <div class="text-success">
                         <h6 class="my-0">Promo code</h6>
                     </div>
                     <span class="text-success">-{{0.02*total | currency:'USD'}}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between">
-                    <span>Total</span>
-                    <strong>{{total}}</strong>
+                    <span><strong>Total</strong></span>
+                    <strong>{{total | currency:'USD'}}</strong>
                 </li>
             </ul>
 
             <form class="card p-2">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Promo code">
+                <div class="input-group" >
+                    <input  type="text" #box class="form-control" name="box" placeholder="Promo code" >
                     <div class="input-group-append">
-                        <button type="submit" class="btn btn-secondary">Redeem</button>
+                        <button type="submit" class="btn btn-secondary" style="color:white; background-color:red;"  (click)="onEnter(box.value)">Redeem</button>
                     </div>
                 </div>
+                  <div *ngIf="failure" class="alert alert-danger">
+                    Please enter a valid promo code to get a discount
+                  </div>
             </form>
         </div>
-        <div class="col-md-8 order-md-1" style="color:black">
+        <div class="col-md-8 order-md-1"  style="color:white"> 
             <form class="needs-validation" novalidate>
                 <div>
                     <h4 class="mb-3">Billing address</h4>
@@ -201,11 +205,11 @@
     </div>
 
 </div>
-<footer class="my-5 pt-5 text-muted text-center text-small">
+<!-- <footer class="my-5 pt-5 text-muted text-center text-small">
     <p class="mb-1">&copy; MadMenClothing</p>
     <ul class="list-inline" >
         <li class="list-inline-item" ><a href="#" style="color:red">Privacy</a></li>
         <li class="list-inline-item"><a href="#" style="color:red">Terms</a></li>
         <li class="list-inline-item"><a href="#" style="color:red">Support</a></li>
     </ul>
-</footer>
+</footer> -->

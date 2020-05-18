@@ -14,7 +14,7 @@ const BASE_URL = "http://localhost:1337/Product/";
 export class CartComponent implements OnInit {
   _http:HttpClient;
   _errorMessage:String = "";
-
+orders = []
   cartItems = [];
   codes = ["Maxwell", "Harsimran", "AleafVsShabnam", "SJPark","Angela","Taz" ]
   cartTotal = 0
@@ -27,13 +27,38 @@ export class CartComponent implements OnInit {
     ) {
     this._http = http;
     this.order = ""
+    this.getAllOrders();
    }
 
   ngOnInit() {
     this.msg.getMsg().subscribe((product) => {
+      if (this.cartItems.length==0){
+        console.log(0)
+        for (var i = 0; i < this.orders.length; i++) {
+          this.deleteProduct(this.orders[i]._id)
+          console.log("Done")
+          } 
+      }
       this.addProductToCart(product)
     })
 
+  }
+
+  getAllOrders() {
+    let url = 'http://localhost:1337/Order/Index'
+    this._http.get<any>(url)
+      // Get data and wait for result.
+      .subscribe(result => {
+        this.orders = result.orders;
+        console.log(this.orders)
+        // this.orders.push({qty:1})
+        // this.ManageCart(this.orders)
+
+      },
+        error => {
+          // Let user know about the error.
+          this._errorMessage = error;
+        })
   }
 
   clearPromo() {
@@ -79,7 +104,6 @@ export class CartComponent implements OnInit {
   }
 
   removeItem(item) {
-
     const index = this.cartItems.indexOf(item)
         this.cartItems.splice(index, 1)
   
@@ -110,8 +134,8 @@ deleteProduct(_id) {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }), 
     "body": { _id:_id}
   };
-
-  let url = BASE_URL + "Delete"
+console.log("done")
+  let url = "http://localhost:1337/Order/Delete"
   this.http.delete(  url , httpOptions) 
   .subscribe(
       // Data is received from the post request.

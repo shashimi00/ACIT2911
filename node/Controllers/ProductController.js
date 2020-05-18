@@ -32,7 +32,8 @@ exports.Create = async function(request, response) {
 exports.CreateProduct = async function(request, response) {
     let tempProductObj  = new Product( {
         "_id":request.body._id, "productName":    request.body.productName,
-        "price":request.body.price,"description": request.body.description
+        "price":request.body.price,"description": request.body.description,
+        "path":request.body.path
     });
     // Call Repo to save 'Product' object.
     let responseObject = await _productRepo.create(tempProductObj);

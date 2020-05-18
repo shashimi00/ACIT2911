@@ -97,11 +97,11 @@ export class ViewComponent implements OnInit {
 
   writeReview(){
     if (this.message="Not logged in."){
-    window.location.href = "http://localhost:4200/review";
-    this.guest = false
+      this.guest = true
   }
     else {
-      this.guest = true
+      window.location.href = "http://localhost:4200/review";
+    this.guest = false
     }
   }
   

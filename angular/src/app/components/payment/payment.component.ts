@@ -15,7 +15,10 @@ export class PaymentComponent implements OnInit {
   _errorMessage: String = "";
   orders: Array<any>;
   cart: Array<any>
-  total: Number
+  total: any
+  success = false;
+  failure = false
+  codes = ["Maxwell", "Harsimran", "AleafVsShabnam", "SJPark","Angela","Taz" ]
 
   constructor(private eventEmitterService: EventEmitterService, private http: HttpClient) {
     this._http = http;
@@ -26,7 +29,11 @@ export class PaymentComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
 
+  clearPromo() {
+    this.success = false
+    this.failure = false
   }
 
   getAllOrders() {
@@ -46,14 +53,22 @@ export class PaymentComponent implements OnInit {
         })
   }
 
-  cartTotal() {
-    this.total = 0
-    for (var j = 0; j < this.cart.length; j++) {
-      console.log(this.cart[j].price)
-      this.total+=this.cart[j].price
+onEnter(value){
+  // this.total()
+    this.clearPromo()
+  for (var i=0;i<this.codes.length;i++){
+        if (this.codes[i] == value){
+          const index = this.codes.indexOf(value)
+          // if (index> -1){
+              this.codes.splice(index, 1) 
+    this.total = 0.98*this.total
+    this.success=true
     }
-   
   }
+  if (this.success == false) {
+    this.failure = true
+  }
+}
 
 
   ManageCart(order) {
@@ -77,6 +92,12 @@ export class PaymentComponent implements OnInit {
 this.cartTotal()
   }
 
+  cartTotal() {
+    this.total = 0
+    this.cart.forEach(item => {
+    this.total = this.total + (item.qty * item.price)
+    })
+  }
 
   deleteProduct(_id) {
 
@@ -85,7 +106,7 @@ this.cartTotal()
       "body": { _id:_id}
     };
   
-    let url = BASE_URL + "Order/Delete"
+    let url = "http://localhost:1337/Order/Delete"
     this.http.delete(  url , httpOptions) 
     .subscribe(
         // Data is received from the post request.
@@ -100,21 +121,15 @@ this.cartTotal()
   }
 
   checkout() {
-    this.getAllOrders()
+    // this.gtAllOrders()
     for (var i = 0; i < this.orders.length; i++) {
     this.deleteProduct(this.orders[i]._id)
     console.log("Done")
-    }
-    
-    window.location.href = "http://localhost:4200/shoppingCart";
-
+    } 
+    // window.location.href = "http://localhost:4200/shoppingCart";
   }
 
   validate(){
-    // (function () {
-      // 'use strict'
-    
-      // window.addEventListener('load', function () {
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
         var forms = document.getElementsByClassName('needs-validation')
     
@@ -127,10 +142,7 @@ this.cartTotal()
             }
             form.classList.add('was-validated')
           }, false)
-        })
-      
-   
+        }) 
   }
-
 }
 
