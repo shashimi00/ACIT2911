@@ -25,7 +25,7 @@ To run this project, download it and then
 * Navigate into node folder and run **npm install**
 * then run **npm start** to get the server running
 * Now navigate into the angular folder and run **npm install**
-* Then run **ng serve** and go to **http://localhost:4200/__ to see your application running
+* Then run **ng serve** and go to **http://localhost:4200/** to see your application running
 
 ## Running unit tests
 * Run ng test in the angular folder to execute the unit tests via Karma
