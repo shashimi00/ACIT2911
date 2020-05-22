@@ -23,7 +23,7 @@ You will need to have node and angular installed on your local machine to run th
 ## Getting Started
 To run this project, download it and then
 * Navigate into node folder and run npm install
-* then run npm start to get the server running
+* then run > npm start to get the server running
 * Now navigate into the angular folder and run npm install
 * Then run ng serve and go to http://localhost:4200/ to see your application running
 
@@ -32,10 +32,10 @@ To run this project, download it and then
 * Run npm test in the node/tests folder to execute the unit tests with mocha
 
 ## Authors
-Harsimran Kaur
-Shabnam Hashimi
-Taz Forster
-Varinder Saini
-Sagarika
-Sukhmanpreet Kaur
+* Harsimran Kaur
+* Shabnam Hashimi
+* Taz Forster
+* Varinder Saini
+* Sagarika
+* Sukhmanpreet Kaur
 
