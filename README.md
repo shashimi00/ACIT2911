@@ -12,13 +12,13 @@ An online shopping web application that allows customers to purchase items onlin
 * Reading and writing reviews
 
 ## Technologies
-* Angular 9.1.3
-* NodeJS 12.14.1 
-* MongoDb 4.2.2
-* Bootstrap 4
+* **Angular** 9.1.3
+* **NodeJS** 12.14.1 
+* **MongoDb** 4.2.2
+* **Bootstrap** 4
 
 ## Prerequisites
-You will need to have node and angular installed on your local machine to run the application
+You will need to have **node** and **angular** installed on your local machine to run the application
 
 ## Getting Started
 To run this project, download it and then
@@ -28,8 +28,8 @@ To run this project, download it and then
 * Then run **ng serve** and go to **http://localhost:4200/** to see your application running
 
 ## Running unit tests
-* Run ng test in the angular folder to execute the unit tests via Karma
-* Run npm test in the node/tests folder to execute the unit tests with mocha
+* Run **ng test** in the **angular** folder to execute the unit tests via **Karma**
+* Run **npm test** in the **node/tests** folder to execute the unit tests for backend with **mocha**
 
 ## Authors
 * Harsimran Kaur
