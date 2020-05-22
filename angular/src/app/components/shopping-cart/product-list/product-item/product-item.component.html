@@ -1,0 +1,35 @@
+<div class="card mb-4 shadow-sm" style="background-color: black; border: 4px white solid; padding: 1px;">
+
+  <img *ngIf="productItem.productName == 'Striped Tie'" class="bd-placeholder-img card-img-top p-2" width="100%"
+    height="225px"
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSYSiTCrgzQ-EZbE83kK9b6xma7j3r5NzxIAIs8XU8HLZ05j_fj&usqp=CAU"
+    style="padding: 4px;" />
+  <img *ngIf="productItem.productName == 'Leather shoes'" class="bd-placeholder-img card-img-top p-2" width="100%"
+    height="225px" src="https://i1.adis.ws/i/drmartens/24758001.80.jpg?$medium$" style="padding: 4px;" />
+  <img *ngIf="productItem.productName == 'Dress shirt'" class="bd-placeholder-img card-img-top p-2" width="100%"
+    height="225px" src="https://images.menswearhouse.com/is/image/TMW/MW40_59K0_42_CALVIN_KLEIN_COBALT_MAIN?$40MainPDP$"
+    style="padding: 4px;" />
+  <img *ngIf="productItem.productName == 'Dress pants'" class="bd-placeholder-img card-img-top p-2" width="100%"
+    height="225px"
+    src="https://slimages.macysassets.com/is/image/MCY/products/8/optimized/15864808_fpx.tif?op_sharpen=1&wid=500&hei=613&fit=fit,1&$filtersm$"
+    style="padding: 4px;" />
+  <img *ngIf="productItem.productName == 'Bowtie'" class="bd-placeholder-img card-img-top p-2" height="225px"
+    width="100%"
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS9kovCrv41O63VNVvIKecpMtmtG6TWIP3KUScFQkB4vnA1fRHg&usqp=CAU"
+    style="padding: 4px;" />
+  <img *ngIf="productItem.productName == 'Formal Shoes'" class="bd-placeholder-img card-img-top p-2" height="225px"
+    width="100%" src="https://images-na.ssl-images-amazon.com/images/I/51gwvAAo78L._UY395_.jpg" style="padding: 4px;" />
+
+  <div class="card-body" style="padding: 12px;">
+    <!-- <div id="photo"></div> -->
+    <p class="card-text" style="color:white; padding: 1px;"><strong>{{ productItem.productName }}</strong></p>
+    <p style="color: white; padding: 1px;"><small>{{productItem.description}}</small>
+    </p>
+    <div class="buy d-flex justify-content-between align-items-center">
+      <div class="price text-danger">
+        <h5 class="mt-4">{{ productItem.price | currency:'USD' }}</h5>
+      </div>
+      <button class="btn btn-danger mt-3" (click)="handleAddToCart()"> Add to Cart</button>
+    </div>
+  </div>
+</div>

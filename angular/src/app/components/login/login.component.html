@@ -1,0 +1,27 @@
+<div class="col-md-3" style="background-color: black; border: 4px white solid;">
+  <div class="mb-3">
+    <br>
+    <label for="username" style="color: white"><b>Username</b></label>
+    <div class="input-group">
+
+      <input type="text" class="form-control" id="username" name="username" [(ngModel)]="username"
+        placeholder="Username" required>
+      <div class="invalid-feedback" style="width: 100%;">
+        Your username is required.
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="password" style="color: white"><b>Password </b> </label>
+    <input type="TEXT" class="form-control" name="password" [(ngModel)]="password" placeholder="Password">
+  </div>
+  <span style="color:white">{{errorMessage}}</span>
+  <br>
+  <br>
+
+</div>
+<div>
+  <button style="border: 4px white solid; border-top: 0px;" class="col-md-3 btn btn-danger product-btn" type="submit"
+    (click)="login()">Login</button>
+</div>

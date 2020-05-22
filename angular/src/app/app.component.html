@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-md color">
+  <!-- Brand -->
+  <a class="navbar-brand" href="shoppingCart" style="color: red;">
+    <app-header></app-header>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav  ml-auto">
+      <li>
+        <a class="nav-link" href="shoppingCart"  style="color:white">Shop</a>
+      </li>
+      <li>
+        <a class="nav-link" href="viewReviews"  style="color:white">Reviews</a>
+      </li>
+      <li>
+        <a class="nav-link" href='payment'  style="color:white">Checkout</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="message == 'Not logged in.'" class="nav-link"  style="color:white" href="register">Sign up</a>
+      </li>
+      <li>
+        <a *ngIf="message == 'Not logged in.'"  style="color:white" class="btn btn-outline-danger my-2 my-sm-0" href="login">Log in</a>
+      </li>
+      <li>
+        <a *ngIf="admin" class="nav-link"   style="color:white" href="admin">Edit Products</a>
+      </li>
+      <li>
+        <button *ngIf="message == 'The user has been logged in.'" class="btn btn-outline-danger" type="submit" (click)=logout()>LogOut({{username}})</button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<br>
+<div class="container" align="center">
+  <router-outlet></router-outlet>
+</div>
+<br>
+

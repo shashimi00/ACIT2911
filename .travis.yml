@@ -1,0 +1,23 @@
+language: node_js 
+node_js:
+- "stable"
+
+install:
+- npm install
+cache:
+  directories:
+    - "node_modules"
+
+before_install:
+- cd node
+
+before_script:
+- cd tests
+- sleep 15
+- npm install mocha
+- npm install chai
+- npm install chai-http
+- npm install superagent
+
+services:
+- mongodb

@@ -1,0 +1,25 @@
+<main role="main">
+  <div class="album py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3" *ngFor="let product of _productsArray">
+          <div class="card mb-4 shadow-sm" style="background-color: black; border: 4px white solid;">
+            <div class="card-body">
+              <p class="card-text" style="color: white;"><strong>{{product.productName}}</strong></p>
+              <div class="buy d-flex justify-content-between align-items-center">
+                <div class="price text-danger">
+                  <h5 class="mt-4">{{ product.price | currency:'USD' }}</h5>
+                </div>
+                <button type="button" class="btn btn-danger mt-6" (click)="deleteProduct(product._id)">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container text-right">
+        <a type="button" class="btn btn-danger d-inline" href="/create">Create New Product</a>
+      </div>
+    </div>
+  </div>
+
+</main>
